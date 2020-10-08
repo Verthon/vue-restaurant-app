@@ -1,7 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
-
 let config = null
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
