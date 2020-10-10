@@ -1,10 +1,10 @@
 <template>
-  <nav className="nav container" id="mainNav" aria-label="Main">
-      <router-link className="nav__link" to="/">
-        <h3 className="navbar__brand">Alkinoos Taverna</h3>
+  <nav class="nav container" id="mainNav" aria-label="Main">
+      <router-link class="nav__link" to="/">
+        <h3 class="navbar__brand">Alkinoos Taverna</h3>
       </router-link>
-      <MenuButton @click="handleNavbarToggle" />
-      <NavList isNavActive="active" links="links" withDashboard="true"/>
+      <MenuButton @toggle-navbar="handleNavbarToggle" />
+      <NavList :isNavActive="active" :links="links" :withDashboard="true"/>
     </nav>
 </template>
 
@@ -25,6 +25,7 @@ export default {
   methods: {
     handleNavbarToggle () {
       console.log('click', this.active)
+      this.$emit('toggleNavbar')
       this.active = !this.active
     }
   },
@@ -35,14 +36,11 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-/* @import "@/styles/mixins";
-@import "@/styles/variables"; */
+<style lang="scss">
 
 .show {
   z-index: 1;
-  background: #333;
-  //background: $color-dark;
+  background: $color-dark;
   padding: 2rem;
 }
 
@@ -61,12 +59,12 @@ export default {
     font-weight: 500;
     margin: 0;
 
-    /* @include mQ($mobile) {
+    @include mQ($mobile) {
       font-size: 1.35rem;
-    } */
+    }
 
     &--decorative {
-      //font-family: $font-secondary;
+      font-family: $font-secondary;
     }
   }
 
@@ -87,14 +85,14 @@ export default {
     transform: translate(9999px);
     opacity: 0;
     display: none;
-    /* @include mQ($ipadPro) {
+    @include mQ($ipadPro) {
       transform: translate(0);
       opacity: 1;
       display: flex;
       justify-content: flex-end;
       flex: 1;
       align-items: center;
-    } */
+    }
     &--active {
       transform: translate(0);
       opacity: 1;
@@ -107,25 +105,16 @@ export default {
   }
 
   &__item {
-    /* @include mQ($ipadPro) {
+    @include mQ($ipadPro) {
       margin: 1rem 0 1rem 1rem;
-    } */
+    }
   }
 
   &__link {
     text-transform: capitalize;
     &--active {
-      //@functionfont-family: $font-semi-bold;
+      font-family: $font-semi-bold;
     }
   }
-}
-
-.btn__line {
-  width: 20px;
-  border-radius: 2px;
-  display: flex;
-  height: 0.2rem;
-  background-color: #333;
-  //background-color: $color-dark;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <ul className="menu__list">
-    <NavItem key={item.name} menu={item} />
+  <ul v-show="isNavActive" class="nav__list--active">
+    <NavItem v-for="link in links" :key="link.name" :link="link.link" :name="link.name" />
   </ul>
 </template>
 

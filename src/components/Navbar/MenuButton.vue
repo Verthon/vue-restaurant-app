@@ -1,31 +1,26 @@
 <template>
   <button
-      className="nav__btn"
+      class="nav__btn"
       type="button"
       data-toggle="collapse"
       data-target="#navbarNav"
       aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
-      @click={toggleNavbar}
+      @click="$emit('toggle-navbar')"
     >
-      <span className="btn__line" />
-      <span className="btn__line" />
-      <span className="btn__line" />
+      <span class="btn__line" />
+      <span class="btn__line" />
+      <span class="btn__line" />
     </button>
 </template>
 
 <script>
 export default {
-  props: {
-    toggleNavbar: Function
-  }
 }
 </script>
 
 <style lang="scss">
-@import '../../styles/mixins.scss';
-@import '../../styles/variables';
 
 .nav__btn {
   padding: 0px;
