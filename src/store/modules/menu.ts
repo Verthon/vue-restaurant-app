@@ -20,6 +20,5 @@ export const actions = {
     const response = await MenuService.getMenu()
     const data = getData(response)
     commit('SET_MENU', data)
-    console.log(data)
   }
 }

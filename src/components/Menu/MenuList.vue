@@ -1,8 +1,13 @@
 <template>
   <ul class="menu__list">
-    <MenuItem v-for="item in category.data.data" :key="item.name" :name="item.name" :price="item.price" :description="item.description" />
-      <!-- {category.data.data && category.data.data.map((item: MenuData) => <MenuItem key={item.name} menu={item} />)} -->
-    </ul>
+    <MenuItem
+      v-for="item in category.data.data"
+      :key="item.name"
+      :name="item.name"
+      :price="item.price"
+      :description="item.description"
+    />
+  </ul>
 </template>
 
 <script>
@@ -18,5 +23,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>
