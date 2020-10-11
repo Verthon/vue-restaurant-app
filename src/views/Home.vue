@@ -1,18 +1,19 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="container">
+    <Navbar :links="links"/>
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
-
-export default Vue.extend({
-  name: 'Home',
+<script>
+import Navbar from '@/components/Navbar/Navbar'
+export default {
+  data () {
+    return {
+      links: [{ name: 'Menu', link: 'menu' }, { name: 'Contact', link: 'contact' }]
+    }
+  },
   components: {
-    HelloWorld
+    Navbar
   }
-})
+}
 </script>
