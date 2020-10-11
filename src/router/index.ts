@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '@/views/Home.vue'
 import Menu from '@/views/Menu.vue'
+import BookTable from '@/views/BookTable.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes: Array<RouteConfig> = [
     path: '/menu',
     name: 'Menu',
     component: Menu
+  },
+  {
+    path: '/book-table',
+    name: 'Book Table',
+    component: BookTable
   }
 ]
 
