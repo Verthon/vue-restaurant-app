@@ -7,7 +7,7 @@
         <div class="section__col" v-for="category in menu.menu" :key="category.id">
           <article class="menu__container">
             <h2 class="menu__title">{{ category.id }}</h2>
-            <MenuList category="{category}" />
+            <MenuList :category="category" />
           </article>
         </div>
       </div>

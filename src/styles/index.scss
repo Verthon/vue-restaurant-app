@@ -4,13 +4,13 @@
 
 
 @import "mixins.scss";
-// @import 'modules/_typography.scss';
-// @import "modules/_grid.scss";
+@import 'modules/typography.scss';
+@import "modules/grid.scss";
 // @import "modules/_animations.scss";
 // @import "modules/_header";
 // @import "modules/_book-table";
-// @import "modules/_section";
-// @import "modules/_menu-section";
+@import "modules/section";
+@import "modules/section-menu";
 // @import "modules/_about-section";
 // @import "modules/_testimonials-section";
 // @import "modules/_site-footer";
