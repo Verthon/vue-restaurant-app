@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar links="links" />
+    <Navbar :links="links" />
     <section id="menu" class="section menu container">
       <h1 class="heading heading--center menu__heading">Menu</h1>
       <div class="row">

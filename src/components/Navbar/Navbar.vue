@@ -1,11 +1,11 @@
 <template>
   <nav class="nav container" id="mainNav" aria-label="Main">
-      <router-link class="nav__link" to="/">
-        <h3 class="navbar__brand">Alkinoos Taverna</h3>
-      </router-link>
-      <MenuButton @toggle-navbar="handleNavbarToggle" />
-      <NavList :isNavActive="active" :links="links" :withDashboard="true"/>
-    </nav>
+    <router-link class="nav__link" to="/">
+      <h3 class="navbar__brand">Alkinoos Taverna</h3>
+    </router-link>
+    <MenuButton @toggle-navbar="handleNavbarToggle" />
+    <NavList :isNavActive="active" :links="links" :withDashboard="true" />
+  </nav>
 </template>
 
 <script>
@@ -24,7 +24,6 @@ export default {
   },
   methods: {
     handleNavbarToggle () {
-      console.log('click', this.active)
       this.$emit('toggleNavbar')
       this.active = !this.active
     }
@@ -37,7 +36,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .show {
   z-index: 1;
   background: $color-dark;
