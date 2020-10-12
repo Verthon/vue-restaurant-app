@@ -1,6 +1,11 @@
 {
   "CORE": {
-      "PAGE_TITLE": "Qiwa - Service Name"
+      "PROJECT_NAME": "Alkinoos Taverna",
+      "SUBMIT": "Submit",
+      "DATE": "Date",
+      "GUESTS": "Guests",
+      "EMAIL": "Email",
+      "NAME": "Name"
   },
   "ERROR_PAGE": {
       "LABELS": {
