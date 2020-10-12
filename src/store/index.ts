@@ -7,6 +7,7 @@ import * as menu from './modules/menu'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {},
   modules: {
     booking,
     menu

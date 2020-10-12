@@ -3,7 +3,7 @@
     class="btn"
     :class="{
       'btn--dark': variant === 'dark',
-      'btn--light': vairant === 'light',
+      'btn--light': variant === 'light',
       'btn--small': size === 'small',
       'btn--large': size === 'large',
     }"

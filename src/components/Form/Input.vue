@@ -1,11 +1,20 @@
 <template>
-  <input class="input" :placeholder="placeholder" />
+  <input class="input" :placeholder="placeholder" v-model="value" />
 </template>
 
 <script>
 export default {
   props: {
-    placeholder: String
+    placeholder: String,
+    value: {
+      type: [String, Number],
+      required: true
+    }
+  },
+  watch: {
+    value () {
+      this.$emit('input', this.value)
+    }
   }
 }
 </script>

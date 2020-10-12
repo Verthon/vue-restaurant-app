@@ -1,12 +1,19 @@
 import { Booking } from '@/services/BookingService.types'
-import { State } from '../state'
+import BookingService from '@/services/BookingService'
 
-export const state: { currentBooking: Booking; bookings: Booking[] } = {
+export const namespaced = true
+
+type BookingState = {
+  currentBooking: Booking;
+  bookings: Booking[];
+}
+
+export const state: BookingState = {
   currentBooking: {
     name: '',
     email: '',
     date: '',
-    guests: 0,
+    guests: 1,
     confirmed: false,
     createdAt: ''
   },
@@ -14,10 +21,22 @@ export const state: { currentBooking: Booking; bookings: Booking[] } = {
 }
 
 export const mutations = {
-  ADD_BOOKING (state: State, booking: Booking) {
-    state.booking = booking
+  ADD_BOOKING (state: BookingState, booking: Booking) {
+    state.currentBooking = booking
   },
-  EDIT_BOOKING (state: State, booking: Booking) {
-    state.booking = booking
+  EDIT_BOOKING (state: BookingState, booking: Booking) {
+    state.currentBooking = booking
+  }
+}
+
+export const actions = {
+  async addToDatabase ({ commit }, booking: Booking) {
+    const response = await BookingService.addBooking(booking)
+    if (response) {
+      commit('ADD_BOOKING', booking)
+    }
+  },
+  add ({ commit }, booking: Booking) {
+    commit('ADD_BOOKING', booking)
   }
 }

@@ -9,7 +9,7 @@
         <Form />
       </div>
       <article class="section section__col section__col--flexible">
-        <h2 class="table-booking__subtitle">Located in London</h2>
+        <h2 class="table-booking__subtitle">Located in {{location.city}}</h2>
         <p>{{location.address}}</p>
         <p>{{location.city}}, {{location.province}}, {{location.code}}</p>
         <p>{{contact.phone}}</p>
