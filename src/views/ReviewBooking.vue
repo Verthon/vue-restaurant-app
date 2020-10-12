@@ -1,48 +1,104 @@
 <template>
-  <div class="review-booking">
-    <h2 class="heading modal-book__heading">Thank you</h2>
-    <p class="text modal-book__text">Thank you for booking reservation.</p>
-    <p class="text modal-book__text">We will contact you shortly.</p>
-    <footer class="modal-book__footer">
-      <router-link class="btn btn--transparent" to="/">
-        Back to Home
-      </router-link>
-      <router-link class="btn btn--light" to="/menu">
-        See Menu
-      </router-link>
-    </footer>
-    <article class="review-booking__content">
-      <h1 class="heading review-booking__company">
-        <router-link to="/">{contact.name}</router-link>
-      </h1>
-      <img class="review-booking__image" src="{about}" alt="" />
-      <h2 class="review-booking__title">Edit booking</h2>
-      <div class="review-booking__form">
-        <Form
-          booking="{bookingData?.booking}"
-          config="{DATEPICKER_CONFIG}"
-          handleChange="{bookingData?.handleBookingChange}"
-          handleDate="{bookingData?.handleDateChange!}"
-          handleSubmit="{onSubmit}"
-          submitBtn="{false}"
-          cssClass="form--edit"
-          action="{getEmailActionUrl(email)}"
-          withBookingDesc="{true}"
-        />
+<div>
+  <div v-if="edit" class="review-booking">
+        <article class="review-booking__content">
+          <h1 class="heading review-booking__company">
+            <router-link to="/">{{ company.contact.name }}</router-link>
+          </h1>
+          <img class="review-booking__image" :src="image" alt="" />
+          <h2 class="review-booking__title">Edit booking</h2>
+          <div class="review-booking__form">
+            <EditForm/>
+          </div>
+          <footer class="review-booking__footer review-booking__footer--edit">
+            <form onSubmit={onSubmit}>
+              <Button variant="light" type="submit">
+                Confirm Booking
+              </Button>
+            </form>
+          </footer>
+        </article>
       </div>
-      <footer class="review-booking__footer review-booking__footer--edit">
-        <form onSubmit="{onSubmit}">
-          <Button class="btn--light" type="submit">
-            Confirm Booking
-          </Button>
-        </form>
-      </footer>
-    </article>
-  </div>
+
+  <div v-if="!edit" class="review-booking">
+        <article class="review-booking__content">
+          <h1 class="heading review-booking__company">
+            <router-link to="/">{{ company.contact.name }}</router-link>
+          </h1>
+          <img class="review-booking__image" :src="image" alt="" />
+          <p class="review-booking__client">
+            <strong class="review-booking__name">{{ booking.currentBooking.name || 'Jason Lengstorf' }}</strong> reservation
+          </p>
+          <div class="review-booking__container">
+            <div class="section__col section__col--flexible">
+              <p class="review-booking__value">{{ booking.currentBooking.guests }}</p>
+              <p class="review-booking__description">Guests</p>
+            </div>
+            <div class="section__col section__col--flexible">
+              <p class="review-booking__value">{{ renderDate }}</p>
+              <p class="review-booking__description">Date</p>
+            </div>
+            <div class="section__col section__col--flexible">
+              <p class="review-booking__value">{{ renderTime }}</p>
+              <p class="review-booking__description">Time</p>
+            </div>
+          </div>
+          <p class="review-booking__address">{{ company.location.address }}</p>
+          <p class="review-booking__address">
+            {{company.location.city}}, {{company.location.province}}, {{company.location.code}}
+          </p>
+          <footer class="review-booking__footer">
+            <form @submit.prevent="handleSubmit">
+              <Button variant="transparent" type="button" @click="edit=true">
+                Edit booking
+              </Button>
+              <Button variant="light" type="submit">
+                Confirm Booking
+              </Button>
+            </form>
+          </footer>
+        </article>
+      </div>
+</div>
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+import EditForm from '@/components/Form/EditForm'
+import Button from '@/components/Button'
+import { splitDate, formatDate, convertToDate, splitTime } from '@/utils/date'
+import about from '@/assets/landing/brooke-lark-about.jpg'
+export default {
+  data () {
+    return {
+      edit: false,
+      image: about
+    }
+  },
+  computed: {
+    ...mapState({
+      company: 'company',
+      booking: 'booking'
+    }),
+    renderDate: function () {
+      const date = this.booking.currentBooking.date
+      return splitDate(formatDate(convertToDate(date)))
+    },
+    renderTime: function () {
+      const date = this.booking.currentBooking.date
+      return splitTime(formatDate(convertToDate(date)))
+    }
+  },
+  methods: {
+    handleSubmit: function (e) {
+      console.log(e)
+    }
+  },
+  components: {
+    EditForm,
+    Button
+  }
+}
 </script>
 
-<style></style>
+<style lang="scss"></style>

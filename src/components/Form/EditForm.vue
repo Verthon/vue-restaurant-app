@@ -2,28 +2,27 @@
   <form @submit.prevent="handleSubmit">
     <Label for="name">Name</Label>
     <Input
-      :value="booking.name"
-      @input="booking.name = $event"
+      :value="booking.currentBooking.name"
+      @input="booking.currentBooking.name = $event"
       placeholder="Your name"
       name="name"
     />
     <Label for="email">Email</Label>
-    <Input :value="booking.email" @input="booking.email = $event" placeholder="Your email" name="email" />
+    <Input :value="booking.currentBooking.email" @input="booking.currentBooking.email = $event" placeholder="Your email" name="email" />
     <Label for="date">Date</Label>
     <datepicker
-      v-model="booking.date"
+      v-model="booking.currentBooking.date"
       placeholder="Select a date"
       name="date"
     />
     <Label for="guests">Guests</Label>
     <Input
       type="number"
-      :value="booking.guests"
-      @input="booking.guests = $event"
+      :value="booking.currentBooking.guests"
+      @input="booking.currentBooking.guests = $event"
       placeholder="Number of guests"
       name="guests"
     />
-    <Button type="submit" variant="dark" size="large">Submit</Button>
   </form>
 </template>
 
@@ -33,32 +32,16 @@ import Datepicker from 'vuejs-datepicker'
 
 import Input from '@/components/Form/Input'
 import Label from '@/components/Form/Label'
-import Button from '@/components/Button'
 export default {
   components: {
     Datepicker,
     Input,
-    Label,
-    Button
-  },
-  data () {
-    return {
-      booking: this.getInitialFormValues()
-    }
+    Label
   },
   methods: {
     ...mapActions('booking', ['add']),
     handleSubmit () {
       this.$store.dispatch('booking/add', this.booking)
-      this.$router.push({ path: 'review-booking' })
-    },
-    getInitialFormValues () {
-      return {
-        name: '',
-        date: '',
-        guests: 1,
-        email: ''
-      }
     }
   },
   computed: mapState({
