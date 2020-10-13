@@ -1,0 +1,31 @@
+{
+  "CORE": {
+      "PROJECT_NAME": "Alkinoos Taverna",
+      "SUBMIT": "Submit",
+      "DATE": "Date",
+      "GUESTS": "Guests",
+      "EMAIL": "Email",
+      "NAME": "Name"
+  },
+  "ERROR_PAGE": {
+      "LABELS": {
+          "UPS": "Oops!",
+          "ERROR_TYPE": "Error:",
+          "NOT_FOUND": "We can't find the page you're looking for.",
+          "OTHER_ERROR": "There was an server error!",
+          "DONT_WORRY": "You can return to the main page.",
+          "GO_BACK": "Back to homepage"
+      },
+      "HEADER": {
+          "SERVICES": "Services",
+          "KNOWLEDGE_CENTER": "Knowledge Center",
+          "SIGN_IN": "Sign in",
+          "REGISTER": "Register now"
+      },
+      "ERRORS": {
+          "NOT_FOUND": "Page Not Found",
+          "UNAUTHORIZED": "Unauthorized",
+          "SERVER_ERROR": "Server Error"
+      }
+  }
+}

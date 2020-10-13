@@ -1,16 +1,17 @@
 import { MenuData } from '@/services/MenuSevice.types'
-import { State } from '../state'
 import MenuService from '@/services/MenuService'
 import { getData } from '@/utils/firestore'
 
 export const namespaced = true
 
-export const state: { menu: MenuData[] } = {
+type MenuState = { menu: MenuData[] }
+
+export const state: MenuState = {
   menu: []
 }
 
 export const mutations = {
-  SET_MENU (state: State, menu: MenuData[]) {
+  SET_MENU (state: MenuState, menu: MenuData[]) {
     state.menu = menu
   }
 }
