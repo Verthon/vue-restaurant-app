@@ -1,21 +1,21 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <Label for="name">Name</Label>
+    <Label for="name">{{$t('CORE.NAME')}}</Label>
     <Input
       :value="booking.name"
       @input="booking.name = $event"
       placeholder="Your name"
       name="name"
     />
-    <Label for="email">Email</Label>
+    <Label for="email">{{$t('CORE.EMAIL')}}</Label>
     <Input :value="booking.email" @input="booking.email = $event" placeholder="Your email" name="email" />
-    <Label for="date">Date</Label>
+    <Label for="date">{{$t('CORE.DATE')}}</Label>
     <datepicker
       v-model="booking.date"
       placeholder="Select a date"
       name="date"
     />
-    <Label for="guests">Guests</Label>
+    <Label for="guests">{{$t('CORE.GUESTS')}}</Label>
     <Input
       type="number"
       :value="booking.guests"
@@ -23,7 +23,7 @@
       placeholder="Number of guests"
       name="guests"
     />
-    <Button type="submit" variant="dark" size="large">Submit</Button>
+    <Button type="submit" variant="dark" size="large">{{$t('CORE.SUBMIT')}}</Button>
   </form>
 </template>
 
