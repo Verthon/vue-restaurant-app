@@ -50,6 +50,7 @@ export default {
     ...mapActions('booking', ['add']),
     handleSubmit () {
       this.$store.dispatch('booking/add', this.booking)
+      this.$router.push({ path: 'review-booking' })
     },
     getInitialFormValues () {
       return {

@@ -1,11 +1,11 @@
 @import "normalize.scss";
 @import "variables.scss";
-@import "reset.scss";
+@import "reset";
 
 
 @import "mixins.scss";
-@import 'modules/typography.scss';
-@import "modules/grid.scss";
+@import 'modules/typography';
+@import "modules/grid";
 // @import "modules/_animations.scss";
 // @import "modules/_header";
 @import "modules/book-table";
@@ -14,7 +14,7 @@
 // @import "modules/_about-section";
 // @import "modules/_testimonials-section";
 // @import "modules/_site-footer";
-// @import "modules/_review-booking";
+@import "modules/review-booking";
 // @import "modules/_admin.scss";
 // @import "modules/_login.scss";
 // @import "modules/_toast.scss";
