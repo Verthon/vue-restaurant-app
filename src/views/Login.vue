@@ -53,9 +53,10 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['doLogin']),
-    handleSubmit: function async () {
+    handleSubmit: async function () {
       console.log('this', this.$store)
-      await this.$store.dispatch('doLogin')
+      this.$store.dispatch('auth/doLogin')
+      // this.$router.push({ path: 'admin' })
     }
   },
   components: {

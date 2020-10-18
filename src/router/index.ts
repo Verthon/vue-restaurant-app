@@ -5,6 +5,9 @@ import Menu from '@/views/Menu.vue'
 import BookTable from '@/views/BookTable.vue'
 import ReviewBooking from '@/views/ReviewBooking.vue'
 import Login from '@/views/Login.vue'
+import Admin from '@/views/Admin.vue'
+
+import store from '@/store/index'
 
 Vue.use(VueRouter)
 
@@ -33,6 +36,15 @@ const routes: Array<RouteConfig> = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    beforeEnter: (to, from, next) => {
+      if (store.state.auth.isAuthorized && store.state.auth.user) next({ name: 'Login' })
+      else next()
+    }
   }
 ]
 
