@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue'
 import Menu from '@/views/Menu.vue'
 import BookTable from '@/views/BookTable.vue'
 import ReviewBooking from '@/views/ReviewBooking.vue'
+import Login from '@/views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes: Array<RouteConfig> = [
     path: '/review-booking',
     name: 'Review Booking',
     component: ReviewBooking
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 ]
 

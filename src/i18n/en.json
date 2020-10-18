@@ -5,7 +5,11 @@
       "DATE": "Date",
       "GUESTS": "Guests",
       "EMAIL": "Email",
-      "NAME": "Name"
+      "NAME": "Name",
+      "LOGIN": "Login"
+  },
+  "ERROR_MESSAGE": {
+    "LOGIN": "Error occurred with login, please try again"
   },
   "ERROR_PAGE": {
       "LABELS": {
