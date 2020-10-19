@@ -4,6 +4,10 @@ import Home from '@/views/Home.vue'
 import Menu from '@/views/Menu.vue'
 import BookTable from '@/views/BookTable.vue'
 import ReviewBooking from '@/views/ReviewBooking.vue'
+import Login from '@/views/Login.vue'
+import Admin from '@/views/Admin.vue'
+
+import store from '@/store/index'
 
 Vue.use(VueRouter)
 
@@ -27,6 +31,21 @@ const routes: Array<RouteConfig> = [
     path: '/review-booking',
     name: 'Review Booking',
     component: ReviewBooking
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    beforeEnter: (to, from, next) => {
+      console.log('beforeEnter', store.state.auth.isAuthorized)
+      if (!store.state.auth.isAuthorized && !store.state.auth.user) next({ name: 'Login' })
+      else next()
+    }
   }
 ]
 
