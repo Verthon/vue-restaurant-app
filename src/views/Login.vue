@@ -54,8 +54,12 @@ export default {
   methods: {
     ...mapActions('auth', ['doLogin']),
     handleSubmit: async function () {
-      console.log('this', this.$store)
-      this.$store.dispatch('auth/doLogin')
+      const credentials = {
+        email: this.email,
+        password: this.password
+      }
+      console.log('this', credentials)
+      this.$store.dispatch('auth/doLogin', credentials)
       // this.$router.push({ path: 'admin' })
     }
   },

@@ -42,7 +42,8 @@ const routes: Array<RouteConfig> = [
     name: 'Admin',
     component: Admin,
     beforeEnter: (to, from, next) => {
-      if (store.state.auth.isAuthorized && store.state.auth.user) next({ name: 'Login' })
+      console.log('beforeEnter', store.state.auth.isAuthorized)
+      if (!store.state.auth.isAuthorized && !store.state.auth.user) next({ name: 'Login' })
       else next()
     }
   }
