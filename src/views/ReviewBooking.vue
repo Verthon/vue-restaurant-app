@@ -11,7 +11,7 @@
             <EditForm/>
           </div>
           <footer class="review-booking__footer review-booking__footer--edit">
-            <form onSubmit={onSubmit}>
+            <form @submit.prevent="handleSubmit">
               <Button variant="light" type="submit">
                 Confirm Booking
               </Button>
@@ -49,7 +49,7 @@
           </p>
           <footer class="review-booking__footer">
             <form @submit.prevent="handleSubmit">
-              <Button variant="transparent" type="button" @click="edit=true">
+              <Button variant="transparent" type="button" v-on:click="handleEdit">
                 Edit booking
               </Button>
               <Button variant="light" type="submit">
@@ -63,10 +63,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import EditForm from '@/components/Form/EditForm'
 import Button from '@/components/Button'
 import { splitDate, formatDate, convertToDate, splitTime } from '@/utils/date'
+import * as types from '@/types/store'
 import about from '@/assets/landing/brooke-lark-about.jpg'
 export default {
   data () {
@@ -77,8 +78,8 @@ export default {
   },
   computed: {
     ...mapState({
-      company: 'company',
-      booking: 'booking'
+      company: (state) => state.company,
+      booking: (state) => state.booking
     }),
     renderDate: function () {
       const date = this.booking.currentBooking.date
@@ -90,8 +91,13 @@ export default {
     }
   },
   methods: {
-    handleSubmit: function (e) {
-      console.log(e)
+    ...mapActions({ addBookingToDb: types.ACTION_BOOKING_SAVE_TO_DB }),
+    handleSubmit: async function () {
+      await this.addBookingToDb(this.booking.currentBooking)
+    },
+    handleEdit: function (e) {
+      e.preventDefault()
+      this.edit = true
     }
   },
   components: {

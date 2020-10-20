@@ -30,6 +30,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import Datepicker from 'vuejs-datepicker'
+import * as types from '@/types/store'
 
 import Input from '@/components/Form/Input'
 import Label from '@/components/Form/Label'
@@ -41,15 +42,10 @@ export default {
     Label,
     Button
   },
-  data () {
-    return {
-      booking: this.getInitialFormValues()
-    }
-  },
   methods: {
-    ...mapActions('booking', ['add']),
+    ...mapActions({ addBooking: types.ACTION_BOOKING_ADD }),
     handleSubmit () {
-      this.$store.dispatch('booking/add', this.booking)
+      this.addBooking(this.booking)
       this.$router.push({ path: 'review-booking' })
     },
     getInitialFormValues () {

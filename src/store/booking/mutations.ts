@@ -1,4 +1,4 @@
-import * as types from "@/types/store";
+import * as types from '@/types/store'
 
 import { Booking } from '@/services/BookingService.types'
 
@@ -8,10 +8,10 @@ type BookingState = {
 }
 
 export default {
-  [types.MUTATION_BOOKING_ADD](state: BookingState, booking: Booking) {
+  [types.MUTATION_BOOKING_ADD] (state: BookingState, booking: Booking) {
     state.currentBooking = booking
   },
-  [types.MUTATION_EDIT_BOOKING](state: BookingState, booking: Booking) {
+  [types.MUTATION_BOOKING_EDIT] (state: BookingState, booking: Booking) {
     state.currentBooking = booking
-  },
-};
+  }
+}

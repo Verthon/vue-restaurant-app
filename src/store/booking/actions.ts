@@ -1,1 +1,19 @@
-import * as types from "@/types/store";
+import BookingService from '@/services/BookingService'
+import { Booking } from '@/services/BookingService.types'
+import * as types from '@/types/store'
+
+export default {
+  [types.ACTION_BOOKING_SAVE_TO_DB]: async function ({ commit }, booking: Booking) {
+    try {
+      const response = await BookingService.addBooking(booking)
+      if (response) {
+        commit(types.MUTATION_BOOKING_SAVE_TO_DB, booking)
+      }
+    } catch (error) {
+      console.error('error', error)
+    }
+  },
+  [types.ACTION_BOOKING_ADD]: function ({ commit }, booking: Booking) {
+    commit(types.MUTATION_BOOKING_ADD, booking)
+  }
+}
