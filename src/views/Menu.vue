@@ -16,8 +16,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
+import * as types from '@/types/store'
 import MenuList from '@/components/Menu/MenuList'
 import Navbar from '@/components/Navbar/Navbar'
 export default {
@@ -31,8 +32,9 @@ export default {
   },
   computed: mapState(['menu']),
   methods: {
+    ...mapActions({ setMenu: types.ACTION_MENU_SET }),
     fetchMenu () {
-      this.$store.dispatch('menu/fetchMenu')
+      this.setMenu()
     }
   },
   created () {

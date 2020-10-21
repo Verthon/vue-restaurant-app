@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import booking from '@/store/booking'
+import menu from '@/store/menu'
 
-import * as menu from './modules/menu'
 import * as company from './modules/company'
 import * as auth from './modules/auth'
 
