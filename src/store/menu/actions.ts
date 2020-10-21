@@ -3,7 +3,7 @@ import { getData } from '@/utils/firestore'
 import * as types from '@/types/store'
 
 export default {
-  [types.ACTION_MENU_SET]: async function ({ commit }) {
+  [types.ACTION_MENU_SET]: async function ({ commit }: {commit: Function}) {
     try {
       const response = await MenuService.getMenu()
       const data = getData(response)

@@ -17,7 +17,7 @@
           <p class="login__error">
             {{error ? $t('ERROR_MESSAGE.LOGIN') : null}}
           </p>
-          <Button data-testid="login-submit" type="submit" variant="dark" size="large">
+          <Button data-testid="login-submit" type="submit" variant="dark" size="large" :disabled="auth.isAuthorized">
             {{$t('CORE.LOGIN')}}
           </Button>
         </form>
@@ -32,12 +32,13 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import Navbar from '@/components/Navbar/Navbar'
 import Input from '@/components/Form/Input'
 import Label from '@/components/Form/Label'
 import Button from '@/components/Button'
 import img from '@/assets/landing/brooke-lark-book-table.jpg'
+import * as types from '@/types/store'
 export default {
   data: function () {
     return {
@@ -51,16 +52,20 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState({
+      auth: (state) => state.auth
+    })
+  },
   methods: {
-    ...mapActions('auth', ['doLogin']),
+    ...mapActions({ doLogin: types.ACTION_AUTH_LOGIN }),
     handleSubmit: async function () {
       const credentials = {
         email: this.email,
         password: this.password
       }
-      console.log('this', credentials)
-      this.$store.dispatch('auth/doLogin', credentials)
-      // this.$router.push({ path: 'admin' })
+      await this.doLogin(credentials)
+      this.$router.push({ path: 'admin' })
     }
   },
   components: {

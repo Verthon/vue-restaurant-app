@@ -7,6 +7,7 @@ import store from './store'
 import { i18n } from '@/i18n'
 import '@/styles/index.scss'
 import firebase from 'firebase'
+import * as types from '@/types/store'
 
 Vue.config.productionTip = false
 
@@ -44,7 +45,7 @@ requireComponent.keys().forEach((fileName) => {
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    store.dispatch('auth/setUser', user)
+    store.dispatch(types.ACTION_AUTH_SET_USER, user)
   }
   new Vue({
     i18n,
