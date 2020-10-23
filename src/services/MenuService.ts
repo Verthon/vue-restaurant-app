@@ -1,4 +1,4 @@
-import { db } from '@/firestore/firebase'
+import db from '@/firestore/firebase'
 
 export default {
   async getMenu () {
