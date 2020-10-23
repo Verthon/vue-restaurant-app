@@ -6,6 +6,8 @@ import router from './router'
 import store from './store'
 import { i18n } from '@/i18n'
 import '@/styles/index.scss'
+import firebase from 'firebase'
+import * as types from '@/types/store'
 
 Vue.config.productionTip = false
 
@@ -41,9 +43,14 @@ requireComponent.keys().forEach((fileName) => {
   Vue.component(componentName, componentConfig.default || componentConfig)
 })
 
-new Vue({
-  i18n,
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    store.dispatch(types.ACTION_AUTH_SET_USER, user)
+  }
+  new Vue({
+    i18n,
+    router,
+    store,
+    render: h => h(App)
+  }).$mount('#app')
+})
