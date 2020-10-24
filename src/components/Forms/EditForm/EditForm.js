@@ -1,8 +1,8 @@
 import { mapState, mapActions } from 'vuex'
 import Datepicker from 'vuejs-datepicker'
 
-import Input from '@/components/Forms/Input/Input'
-import Label from '@/components/Forms/Label/Label'
+import Input from '@/components/Forms/Input/Input.vue'
+import Label from '@/components/Forms/Label/Label.vue'
 export default {
   components: {
     Datepicker,

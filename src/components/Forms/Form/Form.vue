@@ -23,7 +23,7 @@
       placeholder="Number of guests"
       name="guests"
     />
-    <Button type="submit" variant="dark" size="large">{{$t('CORE.SUBMIT')}}</Button>
+    <Button id="booking-submit" type="submit" variant="dark" size="large">{{$t('CORE.SUBMIT')}}</Button>
   </form>
 </template>
 

@@ -5,7 +5,7 @@
       class="table-booking__wrapper container"
     >
       <div class="section section__col section__col--flexible">
-        <h2 class="table-booking__subtitle">Make a reservation</h2>
+        <h1 class="table-booking__subtitle">Make a reservation</h1>
         <Form />
       </div>
       <article class="section section__col section__col--flexible">
