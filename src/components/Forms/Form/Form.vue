@@ -27,40 +27,4 @@
   </form>
 </template>
 
-<script>
-import { mapState, mapActions } from 'vuex'
-import Datepicker from 'vuejs-datepicker'
-import * as types from '@/types/store'
-
-import Input from '@/components/Form/Input'
-import Label from '@/components/Form/Label'
-import Button from '@/components/Button'
-export default {
-  components: {
-    Datepicker,
-    Input,
-    Label,
-    Button
-  },
-  methods: {
-    ...mapActions({ addBooking: types.ACTION_BOOKING_ADD }),
-    handleSubmit () {
-      this.addBooking(this.booking)
-      this.$router.push({ path: 'review-booking' })
-    },
-    getInitialFormValues () {
-      return {
-        name: '',
-        date: '',
-        guests: 1,
-        email: ''
-      }
-    }
-  },
-  computed: mapState({
-    booking: 'booking'
-  })
-}
-</script>
-
-<style></style>
+<script src="./Form.js"></script>

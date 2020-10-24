@@ -31,54 +31,5 @@
   </div>
 </template>
 
-<script>
-import { mapActions, mapState } from 'vuex'
-import Navbar from '@/components/Navbar/Navbar'
-import Input from '@/components/Form/Input'
-import Label from '@/components/Form/Label'
-import Button from '@/components/Button'
-import img from '@/assets/landing/brooke-lark-book-table.jpg'
-import * as types from '@/types/store'
-export default {
-  data: function () {
-    return {
-      loginImg: img,
-      email: '',
-      password: '',
-      error: '',
-      links: [
-        { name: 'Menu', link: 'menu' },
-        { name: 'Book Table', link: 'book-table' }
-      ]
-    }
-  },
-  computed: {
-    ...mapState({
-      auth: (state) => state.auth
-    })
-  },
-  methods: {
-    ...mapActions({ doLogin: types.ACTION_AUTH_LOGIN }),
-    handleSubmit: async function () {
-      const credentials = {
-        email: this.email,
-        password: this.password
-      }
-      await this.doLogin(credentials)
-      this.$router.push({ path: 'admin' })
-    }
-  },
-  components: {
-    Navbar,
-    Input,
-    Label,
-    Button
-  }
-}
-</script>
-
-<style lang="scss">
-  .login__form {
-    margin: 2rem 0;
-  }
-</style>
+<script src="./Login.js"></script>
+<style src="./Login.scss" lang="scss"></style>

@@ -26,28 +26,4 @@
   </form>
 </template>
 
-<script>
-import { mapState, mapActions } from 'vuex'
-import Datepicker from 'vuejs-datepicker'
-
-import Input from '@/components/Form/Input'
-import Label from '@/components/Form/Label'
-export default {
-  components: {
-    Datepicker,
-    Input,
-    Label
-  },
-  methods: {
-    ...mapActions('booking', ['add']),
-    handleSubmit () {
-      this.$store.dispatch('booking/add', this.booking)
-    }
-  },
-  computed: mapState({
-    booking: 'booking'
-  })
-}
-</script>
-
-<style></style>
+<script src="./EditForm.js"></script>

@@ -1,11 +1,4 @@
-<template>
-  <div class="container">
-    <Navbar :links="links"/>
-  </div>
-</template>
-
-<script>
-import Navbar from '@/components/Navbar/Navbar'
+import Navbar from '@/components/Navbar/Navbar.vue'
 export default {
   data () {
     return {
@@ -16,4 +9,3 @@ export default {
     Navbar
   }
 }
-</script>
