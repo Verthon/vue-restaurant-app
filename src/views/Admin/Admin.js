@@ -1,12 +1,3 @@
-<template>
-  <div>
-    <Navbar :links="links" />
-    <h1>Admin</h1>
-    <Button @click="handleLogout()">Logout</Button>
-  </div>
-</template>
-
-<script>
 import { mapState, mapActions } from 'vuex'
 import Navbar from '@/components/Navbar/Navbar.vue'
 import Button from '@/components/Button/Button.vue'
@@ -33,7 +24,3 @@ export default {
     Button
   }
 }
-</script>
-
-<style>
-</style>

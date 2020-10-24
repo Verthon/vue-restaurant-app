@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Menu from '@/views/Menu.vue'
-import BookTable from '@/views/BookTable.vue'
-import ReviewBooking from '@/views/ReviewBooking.vue'
-import Login from '@/views/Login.vue'
-import Admin from '@/views/Admin.vue'
+import Home from '@/views/Home/Home.vue'
+import Menu from '@/views/Menu/Menu.vue'
+import BookTable from '@/views/BookTable/BookTable.vue'
+import ReviewBooking from '@/views/ReviewBooking/ReviewBooking.vue'
+import Login from '@/views/Login/Login.vue'
+import Admin from '@/views/Admin/Admin.vue'
 
 import store from '@/store/index'
 
