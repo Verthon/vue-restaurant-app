@@ -64,8 +64,8 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import EditForm from '@/components/Form/EditForm'
-import Button from '@/components/Button'
+import EditForm from '@/components/Forms/EditForm/EditForm.vue'
+import Button from '@/components/Button/Button.vue'
 import { splitDate, formatDate, convertToDate, splitTime } from '@/utils/date'
 import * as types from '@/types/store'
 import about from '@/assets/landing/brooke-lark-about.jpg'

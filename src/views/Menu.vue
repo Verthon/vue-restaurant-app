@@ -19,8 +19,8 @@
 import { mapState, mapActions } from 'vuex'
 
 import * as types from '@/types/store'
-import MenuList from '@/components/Menu/MenuList'
-import Navbar from '@/components/Navbar/Navbar'
+import MenuList from '@/components/Menu/MenuList.vue'
+import Navbar from '@/components/Navbar/Navbar.vue'
 export default {
   data () {
     return {

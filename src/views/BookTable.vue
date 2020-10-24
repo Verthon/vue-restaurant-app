@@ -37,8 +37,8 @@
 
 <script>
 import bookTableImg from '@/assets/brooke-lark-book-table.jpg'
-import Navbar from '@/components/Navbar/Navbar'
-import Form from '@/components/Form/Form'
+import Navbar from '@/components/Navbar/Navbar.vue'
+import Form from '@/components/Forms/Form/Form.vue'
 
 export default {
   data () {

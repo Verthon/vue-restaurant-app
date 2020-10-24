@@ -8,8 +8,8 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import Navbar from '@/components/Navbar/Navbar'
-import Button from '@/components/Button'
+import Navbar from '@/components/Navbar/Navbar.vue'
+import Button from '@/components/Button/Button.vue'
 import * as types from '@/types/store'
 export default {
   links: [

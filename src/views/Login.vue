@@ -33,10 +33,10 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import Navbar from '@/components/Navbar/Navbar'
-import Input from '@/components/Form/Input'
-import Label from '@/components/Form/Label'
-import Button from '@/components/Button'
+import Navbar from '@/components/Navbar/Navbar.vue'
+import Input from '@/components/Forms/Input/Input.vue'
+import Label from '@/components/Forms/Label/Label.vue'
+import Button from '@/components/Button/Button.vue'
 import img from '@/assets/landing/brooke-lark-book-table.jpg'
 import * as types from '@/types/store'
 export default {

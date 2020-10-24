@@ -1,0 +1,12 @@
+.nav__item {
+  @include mQ($ipadPro) {
+    margin: 1rem 0 1rem 1rem;
+  }
+}
+
+.nav__link {
+  text-transform: capitalize;
+  &--active {
+    font-family: $font-semi-bold;
+  }
+}
