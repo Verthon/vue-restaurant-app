@@ -4,6 +4,7 @@ import { mount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 
 import store from '@/store'
+import router from '@/router'
 import BookTable from '@/views/BookTable/BookTable.vue'
 
 const $t = () => {}
@@ -28,10 +29,10 @@ global.Date = new Proxy(Date, {
 
 const createWrapper = () => {
   return mount(BookTable, {
-    stubs: ['router-link'],
-    mocks: { $t },
+    localVue,
     store,
-    localVue
+    mocks: { $t },
+    router
   })
 }
 
@@ -53,8 +54,8 @@ describe('BookTable', () => {
     await flushPromises()
     wrapper.findComponent(Datepicker).vm.$emit('input', new Date())
     await flushPromises()
-    wrapper.find('#booking-submit')
-    const submittedCalls = wrapper.emitted('handleSubmit')
-    expect(submittedCalls).toHaveLength(1)
+    await wrapper.find('#booking-form').trigger('submit')
+    await flushPromises()
+    expect(wrapper.vm.$route.path).toBe('/review-booking')
   })
 })

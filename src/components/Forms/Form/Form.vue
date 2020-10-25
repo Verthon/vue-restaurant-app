@@ -1,29 +1,32 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <Label for="name">{{$t('CORE.NAME')}}</Label>
+  <form @submit.prevent="handleSubmit" id="booking-form">
+    <Label for="name">{{ $t("CORE.NAME") }}</Label>
     <Input
-      :value="booking.name"
-      @input="booking.name = $event"
+      v-model="booking.name"
       placeholder="Your name"
       name="name"
+      required
     />
-    <Label for="email">{{$t('CORE.EMAIL')}}</Label>
-    <Input :value="booking.email" @input="booking.email = $event" placeholder="Your email" name="email" />
-    <Label for="date">{{$t('CORE.DATE')}}</Label>
+    <Label for="email">{{ $t("CORE.EMAIL") }}</Label>
+    <Input v-model="booking.email" placeholder="Your email" name="email" required />
+    <Label for="date">{{ $t("CORE.DATE") }}</Label>
     <datepicker
       v-model="booking.date"
       placeholder="Select a date"
       name="date"
+      required
     />
-    <Label for="guests">{{$t('CORE.GUESTS')}}</Label>
+    <Label for="guests">{{ $t("CORE.GUESTS") }}</Label>
     <Input
       type="number"
-      :value="booking.guests"
-      @input="booking.guests = $event"
+      v-model="booking.guests"
       placeholder="Number of guests"
       name="guests"
+      required
     />
-    <Button id="booking-submit" type="submit" variant="dark" size="large">{{$t('CORE.SUBMIT')}}</Button>
+    <Button id="booking-submit" type="submit" variant="dark" size="large">{{
+      $t("CORE.SUBMIT")
+    }}</Button>
   </form>
 </template>
 

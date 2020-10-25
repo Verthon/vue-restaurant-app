@@ -27,7 +27,7 @@
           </h1>
           <img class="review-booking__image" :src="image" alt="" />
           <p class="review-booking__client">
-            <strong class="review-booking__name">{{ booking.currentBooking.name || 'Jason Lengstorf' }}</strong> reservation
+            <strong class="review-booking__name">{{ booking.currentBooking.name || 'John Doe' }}</strong> reservation
           </p>
           <div class="review-booking__container">
             <div class="section__col section__col--flexible">
