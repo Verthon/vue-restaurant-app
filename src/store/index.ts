@@ -9,6 +9,12 @@ import auth from '@/store/auth'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {
+    booking: booking.state,
+    menu: menu.state,
+    company: company.state,
+    auth: auth.state
+  },
   modules: {
     auth,
     booking,

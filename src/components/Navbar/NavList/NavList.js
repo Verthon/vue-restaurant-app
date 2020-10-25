@@ -1,4 +1,4 @@
-import NavItem from '@/components/Navbar/NavItem/NavItem'
+import NavItem from '@/components/Navbar/NavItem/NavItem.vue'
 
 export default {
   props: {
