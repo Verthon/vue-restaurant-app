@@ -2,7 +2,7 @@ import BookingService from '@/services/BookingService'
 import { Booking } from '@/services/BookingService.types'
 import * as types from '@/types/store'
 
-export default {
+export const actions = {
   [types.ACTION_BOOKING_SAVE_TO_DB]: async function ({ commit }: {commit: Function}, booking: Booking) {
     try {
       const response = await BookingService.addBooking(booking)
@@ -17,3 +17,5 @@ export default {
     commit(types.MUTATION_BOOKING_ADD, booking)
   }
 }
+
+export default actions

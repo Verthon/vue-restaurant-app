@@ -2,22 +2,23 @@ import flushPromises from 'flush-promises'
 import Datepicker from 'vuejs-datepicker'
 import { mount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 
-import store from '@/store'
 import router from '@/router'
 import BookTable from '@/views/BookTable/BookTable.vue'
 
-const $t = () => {}
+const $t = () => ({})
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
+localVue.use(Vuex)
 
 jest.mock('@/firestore/firebase', () => ({
   __esModule: true,
   default: {
     apps: [],
-    initializeApp: () => {},
-    auth: () => {}
+    initializeApp: () => ({}),
+    auth: () => ({})
   }
 }))
 
@@ -27,10 +28,31 @@ global.Date = new Proxy(Date, {
   }
 })
 
+const actions = {
+  addBooking: jest.fn()
+}
+
 const createWrapper = () => {
   return mount(BookTable, {
     localVue,
-    store,
+    store: new Vuex.Store({
+      modules: {
+        booking: {
+          state: {
+            currentBooking: {
+              name: '',
+              email: '',
+              date: '',
+              guests: 1,
+              confirmed: false,
+              createdAt: ''
+            }
+          },
+          actions,
+          namespaced: true
+        }
+      }
+    }),
     mocks: { $t },
     router
   })
