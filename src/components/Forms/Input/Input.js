@@ -1,11 +1,15 @@
 export default {
   props: {
     placeholder: String,
+    required: {
+      type: Boolean,
+      default: false
+    },
     value: [String, Number]
   },
   methods: {
-    updateValue () {
-      this.$emit('input', event.target.value)
+    updateValue (e) {
+      this.$emit('input', e.target.value)
     }
   }
 }

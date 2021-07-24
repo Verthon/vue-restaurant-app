@@ -1,7 +1,9 @@
-import { COMPANY_DATA, COMPANY_DATA_TYPE } from '@/constants/companyData'
+import { Module } from 'vuex'
+import { RootState } from '../types'
+import { CompanyState, state } from './state'
 
-const state: COMPANY_DATA_TYPE = { ...COMPANY_DATA }
-
-export default {
+const company: Module<CompanyState, RootState> = {
   state
 }
+
+export default company
