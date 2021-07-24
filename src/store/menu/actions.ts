@@ -1,8 +1,13 @@
+import { ActionTree } from 'vuex'
+
 import MenuService from '@/services/MenuService'
 import { getData } from '@/utils/firestore'
 import * as types from '@/types/store'
 
-export default {
+import { MenuState } from './state'
+import { RootState } from '../types'
+
+const actions: ActionTree<MenuState, RootState> = {
   [types.ACTION_MENU_SET]: async function ({ commit }: {commit: Function}) {
     try {
       const response = await MenuService.getMenu()
@@ -13,3 +18,5 @@ export default {
     }
   }
 }
+
+export default actions

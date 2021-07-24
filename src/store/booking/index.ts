@@ -1,26 +1,14 @@
+import { Module } from 'vuex'
+
 import actions from './actions'
 import mutations from './mutations'
-import { Booking } from '@/services/BookingService.types'
+import { RootState } from '../types'
+import { BookingState, state } from './state'
 
-type BookingState = {
-  currentBooking: Booking;
-  bookings: Booking[];
-}
-
-const state: BookingState = {
-  currentBooking: {
-    name: '',
-    email: '',
-    date: '',
-    guests: 1,
-    confirmed: false,
-    createdAt: ''
-  },
-  bookings: []
-}
-
-export default {
+const booking: Module<BookingState, RootState> = {
   state,
   actions,
   mutations
 }
+
+export default booking

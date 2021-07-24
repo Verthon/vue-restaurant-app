@@ -1,5 +1,5 @@
 import * as types from '@/types/store'
-import { AuthState } from '.'
+import { AuthState } from './state'
 
 const setUser = (user: firebase.User) => ({
   email: user.email,

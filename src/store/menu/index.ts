@@ -1,15 +1,14 @@
+import { Module } from 'vuex'
+
+import { RootState } from '../types'
 import actions from './actions'
 import mutations from './mutations'
-import { MenuData } from '@/services/MenuSevice.types'
+import { MenuState, state } from './state'
 
-export type MenuState = { menu: MenuData[] }
-
-const state: MenuState = {
-  menu: []
-}
-
-export default {
+export const menu: Module<MenuState, RootState> = {
   state,
   actions,
   mutations
 }
+
+export default menu

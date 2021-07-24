@@ -1,8 +1,12 @@
+import { ActionTree } from 'vuex'
+
 import * as types from '@/types/store'
 import AuthService from '@/services/AuthService'
 import { Credentials } from '@/services/AuthService.types'
+import { AuthState } from './state'
+import { RootState } from '../types'
 
-export default {
+const actions: ActionTree<AuthState, RootState> = {
   [types.ACTION_AUTH_START_AUTHORIZING]: function ({ commit }: {commit: Function}) {
     commit(types.MUTATION_AUTH_START_AUTHORIZING)
   },
@@ -26,5 +30,6 @@ export default {
     const response = await AuthService.doLogout()
     commit(types.MUTATION_AUTH_LOGOUT, response)
   }
-
 }
+
+export default actions
