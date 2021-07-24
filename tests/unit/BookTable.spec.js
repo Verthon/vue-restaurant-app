@@ -48,8 +48,7 @@ const createWrapper = () => {
               createdAt: ''
             }
           },
-          actions,
-          namespaced: true
+          actions
         }
       }
     }),
@@ -65,7 +64,7 @@ describe('BookTable', () => {
     expect(wrapper.find('h1').text()).toBe('Make a reservation')
   })
 
-  it('should move to the next step once user fill correct data', async () => {
+  it('should move to the next route once user fill correct data', async () => {
     const wrapper = createWrapper()
     await flushPromises()
     wrapper.find('[name="name"]').setValue('Mariusz Kowalsky')
