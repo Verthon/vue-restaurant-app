@@ -1,13 +1,14 @@
+import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
-import Datepicker from 'vuejs-datepicker'
+import DatePicker from 'vue2-datepicker'
 import * as types from '@/types/store'
 
 import Input from '@/components/Forms/Input/Input.vue'
 import Label from '@/components/Forms/Label/Label.vue'
 import Button from '@/components/Button/Button.vue'
-export default {
+export default Vue.extend({
   components: {
-    Datepicker,
+    DatePicker,
     Input,
     Label,
     Button
@@ -30,4 +31,4 @@ export default {
   computed: mapState({
     booking: 'booking'
   })
-}
+})

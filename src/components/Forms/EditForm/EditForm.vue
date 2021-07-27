@@ -10,8 +10,9 @@
     <Label for="email">Email</Label>
     <Input :value="booking.currentBooking.email" @input="booking.currentBooking.email = $event" placeholder="Your email" name="email" />
     <Label for="date">Date</Label>
-    <datepicker
+    <DatePicker
       v-model="booking.currentBooking.date"
+      valueType="format"
       placeholder="Select a date"
       name="date"
     />
@@ -26,4 +27,4 @@
   </form>
 </template>
 
-<script src="./EditForm.js"></script>
+<script src="./EditForm.ts" lang="ts"></script>

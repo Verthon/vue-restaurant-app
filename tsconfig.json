@@ -4,6 +4,9 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
     "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
@@ -34,7 +37,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx", "src/i18n/index.ts", "src/main.ts"
-  ],
+, "src/components/Forms/EditForm/EditForm.js"  ],
   "exclude": [
     "node_modules"
   ]

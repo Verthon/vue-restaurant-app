@@ -6,6 +6,7 @@ import * as types from '@/types/store'
 
 import { RootState } from '../types'
 import { BookingState } from './state'
+import { BookingMutation } from './mutations'
 
 export const actions: ActionTree<BookingState, RootState> = {
   [types.ACTION_BOOKING_SAVE_TO_DB]: async function ({ commit }: {commit: Function}, booking: Booking) {
@@ -13,14 +14,14 @@ export const actions: ActionTree<BookingState, RootState> = {
       const response = await BookingService.addBooking(booking)
       console.log(response)
       if (response) {
-        commit(types.MUTATION_BOOKING_SAVE_TO_DB, booking)
+        commit(BookingMutation.BOOKING_SAVE_TO_DB, booking)
       }
     } catch (error) {
       console.error('error', error)
     }
   },
   [types.ACTION_BOOKING_ADD]: function ({ commit }: {commit: Function}, booking: Booking) {
-    commit(types.MUTATION_BOOKING_ADD, booking)
+    commit(BookingMutation.BOOKING_ADD, booking)
   }
 }
 

@@ -1,17 +1,22 @@
-import * as types from '@/types/store'
+import { MutationTree } from 'vuex'
 
 import { Booking } from '@/services/BookingService.types'
 
-type BookingState = {
-  currentBooking: Booking;
-  bookings: Booking[];
+import { BookingState } from './state'
+
+export enum BookingMutation {
+  BOOKING_ADD = 'BOOKING_ADD',
+  BOOKING_EDIT = 'BOOKING_EDIT',
+  BOOKING_SAVE_TO_DB = 'BOOKING_SAVE_TO_DB'
 }
 
-export default {
-  [types.MUTATION_BOOKING_ADD] (state: BookingState, booking: Booking) {
+const mutations: MutationTree<BookingState> = {
+  [BookingMutation.BOOKING_ADD] (state: BookingState, booking: Booking) {
     state.currentBooking = booking
   },
-  [types.MUTATION_BOOKING_EDIT] (state: BookingState, booking: Booking) {
+  [BookingMutation.BOOKING_EDIT] (state: BookingState, booking: Booking) {
     state.currentBooking = booking
   }
 }
+
+export default mutations

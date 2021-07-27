@@ -21,7 +21,7 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   }
 }
 
-const handleError = (error: { code: string }) => {
+const handleError = (error: { message: string; code: string }) => {
   if (error.code === 'failed-precondition') {
     return {
       message: 'Error',
@@ -34,6 +34,12 @@ const handleError = (error: { code: string }) => {
       description:
         'The current browser does not support all of the features required to enable persistence'
     }
+  }
+
+  return {
+    message: 'Error',
+    description:
+    'Unhandled error'
   }
 }
 

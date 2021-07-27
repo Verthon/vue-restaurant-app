@@ -1,21 +1,23 @@
 import { mapState, mapActions } from 'vuex'
-import Datepicker from 'vuejs-datepicker'
+import DatePicker from 'vue2-datepicker'
+import { defineComponent } from '@vue/composition-api'
 
 import Input from '@/components/Forms/Input/Input.vue'
 import Label from '@/components/Forms/Label/Label.vue'
-export default {
+import store from '@/store'
+export default defineComponent({
   components: {
-    Datepicker,
+    DatePicker,
     Input,
     Label
   },
   methods: {
     ...mapActions('booking', ['add']),
     handleSubmit () {
-      this.$store.dispatch('booking/add', this.booking)
+      store.dispatch('booking', this.booking)
     }
   },
   computed: mapState({
     booking: 'booking'
   })
-}
+})
