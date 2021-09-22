@@ -1,14 +1,11 @@
-import { Module } from 'vuex'
+import { Module } from 'vuex-smart-module'
 
-import { RootState } from '../types'
 import actions from './actions'
 import mutations from './mutations'
-import { state, AuthState } from './state'
+import state from './state'
 
-const auth: Module<AuthState, RootState> = {
+export const auth = new Module({
   state,
   actions,
   mutations
-}
-
-export default auth
+})

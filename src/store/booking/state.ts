@@ -1,18 +1,13 @@
-import { Booking } from '@/services/BookingService.types'
+import { Booking } from "@/services/BookingService.types";
 
-export type BookingState = {
-  currentBooking: Booking;
-  bookings: Booking[];
-}
-
-export const state: BookingState = {
-  currentBooking: {
+export default class State {
+  currentBooking: Booking = {
     name: '',
     email: '',
     date: '',
     guests: 1,
     confirmed: false,
     createdAt: ''
-  },
-  bookings: []
+  };
+  bookings: Booking[] = []
 }

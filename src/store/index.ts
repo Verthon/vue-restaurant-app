@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex, { Store, StoreOptions } from 'vuex'
+import { createStore, Module } from 'vuex-smart-module'
 
-import booking from '@/store/booking'
+import { booking } from '@/store/booking'
 import menu from '@/store/menu'
 import company from '@/store/company'
 import auth from '@/store/auth'
@@ -15,12 +16,14 @@ const storeConfig: StoreOptions<RootState> = {
   state: rootState,
   modules: {
     auth,
-    booking,
     menu,
     company
   }
 }
 
-const store: Store<RootState> = new Vuex.Store(storeConfig)
-
-export default store
+export const store = createStore(
+  booking,
+  {
+    strict: process.env.NODE_ENV !== 'production'
+  }
+)

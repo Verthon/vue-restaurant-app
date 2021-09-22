@@ -1,27 +1,24 @@
 import { ActionTree } from 'vuex'
+import { Actions, Getters } from 'vuex-smart-module'
 
 import BookingService from '@/services/BookingService'
 import { Booking } from '@/services/BookingService.types'
-import * as types from '@/types/store'
 
-import { RootState } from '../types'
-import { BookingState } from './state'
+import State from './state'
+import BookingMutations from './mutations'
 
-export const actions: ActionTree<BookingState, RootState> = {
-  [types.ACTION_BOOKING_SAVE_TO_DB]: async function ({ commit }: {commit: Function}, booking: Booking) {
+export default class BookingActions extends Actions<
+  State,
+  Getters<State>,
+  BookingMutations,
+  BookingActions
+> {
+  async addBooking(booking: Booking) {
     try {
-      const response = await BookingService.addBooking(booking)
-      console.log(response)
-      if (response) {
-        commit(types.MUTATION_BOOKING_SAVE_TO_DB, booking)
-      }
+      await BookingService.addBooking(booking)
+      this.commit("addBooking", booking)
     } catch (error) {
-      console.error('error', error)
+      console.log("error", error);
     }
-  },
-  [types.ACTION_BOOKING_ADD]: function ({ commit }: {commit: Function}, booking: Booking) {
-    commit(types.MUTATION_BOOKING_ADD, booking)
   }
 }
-
-export default actions

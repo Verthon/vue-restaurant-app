@@ -1,9 +1,7 @@
-import { Module } from 'vuex'
-import { RootState } from '../types'
-import { CompanyState, state } from './state'
+import { Module } from 'vuex-smart-module'
 
-const company: Module<CompanyState, RootState> = {
-  state
-}
+import state from './state'
 
-export default company
+export const company = new Module({
+  state,
+})

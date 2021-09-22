@@ -11,8 +11,8 @@ export type AuthState = {
   user: null | User;
 }
 
-export const state = {
-  isAuthorized: false,
-  isAuthorizing: false,
-  user: null
+export default class State {
+  isAuthorized = false
+  isAuthorizing = false
+  user = null
 }
