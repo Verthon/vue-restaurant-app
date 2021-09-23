@@ -1,9 +1,9 @@
-import { mapState, mapActions } from 'vuex'
+import Vue from 'vue'
 
-import * as types from '@/types/store'
 import MenuList from '@/components/Menu/MenuList/MenuList.vue'
 import Navbar from '@/components/Navbar/Navbar.vue'
-export default {
+import { menuMapper } from '@/store/menu'
+export default Vue.extend({
   data () {
     return {
       links: [
@@ -12,9 +12,9 @@ export default {
       ]
     }
   },
-  computed: mapState(['menu']),
+  computed: menuMapper.mapState(['menu']),
   methods: {
-    ...mapActions({ setMenu: types.ACTION_MENU_SET }),
+    ...menuMapper.mapActions({ setMenu: 'getMenu' }),
     fetchMenu () {
       this.setMenu()
     }
@@ -26,4 +26,4 @@ export default {
     Navbar,
     MenuList
   }
-}
+})

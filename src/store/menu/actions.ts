@@ -12,11 +12,11 @@ export default class MenuActions extends Actions<
   BookingMutations,
   MenuActions
 > {
-  async getMenu() {
+  async getMenu () {
     try {
       const response = await MenuService.getMenu()
       const data = getData(response)
-      this.commit("setMenu", data as any)
+      this.commit('setMenu', data as any)
     } catch (error) {
       console.error('error', error)
     }

@@ -15,4 +15,4 @@
   </div>
 </template>
 
-<script src="./Menu.js"></script>
+<script src="./Menu.ts" lang="ts"></script>

@@ -1,11 +1,13 @@
-import { mapActions, mapState } from 'vuex'
+import Vue from 'vue'
+
 import Navbar from '@/components/Navbar/Navbar.vue'
 import Input from '@/components/Forms/Input/Input.vue'
 import Label from '@/components/Forms/Label/Label.vue'
 import Button from '@/components/Button/Button.vue'
 import img from '@/assets/landing/brooke-lark-book-table.jpg'
-import * as types from '@/types/store'
-export default {
+import { authMapper } from '@/store/auth'
+
+export default Vue.extend({
   data: function () {
     return {
       loginImg: img,
@@ -19,12 +21,14 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      auth: (state) => state.auth
+    ...authMapper.mapState({
+      isAuthorized: (state) => state.isAuthorized
     })
   },
   methods: {
-    ...mapActions({ doLogin: types.ACTION_AUTH_LOGIN }),
+    ...authMapper.mapActions({
+      doLogin: 'login'
+    }),
     handleSubmit: async function () {
       const credentials = {
         email: this.email,
@@ -40,4 +44,4 @@ export default {
     Label,
     Button
   }
-}
+})
