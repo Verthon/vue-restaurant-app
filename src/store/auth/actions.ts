@@ -1,35 +1,31 @@
-import { ActionTree } from 'vuex'
+import { Actions, Getters } from 'vuex-smart-module'
 
-import * as types from '@/types/store'
 import AuthService from '@/services/AuthService'
 import { Credentials } from '@/services/AuthService.types'
-import { AuthState } from './state'
-import { RootState } from '../types'
 
-const actions: ActionTree<AuthState, RootState> = {
-  [types.ACTION_AUTH_START_AUTHORIZING]: function ({ commit }: {commit: Function}) {
-    commit(types.MUTATION_AUTH_START_AUTHORIZING)
-  },
-  [types.ACTION_AUTH_LOGIN]: async function ({ commit }: {commit: Function}, credentials: Credentials) {
-    commit(types.MUTATION_AUTH_START_AUTHORIZING)
+import State from './state'
+import BookingMutations from './mutations'
+
+export default class AuthActions extends Actions<
+  State,
+  Getters<State>,
+  BookingMutations,
+  AuthActions
+> {
+  async login(credentials: Credentials) {
     try {
+      this.commit("startAuthorizing")
       const response = await AuthService.doLogin(credentials.email, credentials.password)
       if (response) {
-        commit(types.MUTATION_AUTH_LOGIN, response)
+        this.commit("login", response)
       }
     } catch (error) {
-      console.error('Login error', error)
+      console.log("error", error);
     }
-  },
-  [types.ACTION_AUTH_SET_USER]: function ({ commit }: {commit: Function}, user: firebase.User) {
-    commit(types.MUTATION_AUTH_START_AUTHORIZING)
-    commit(types.MUTATION_AUTH_SET_USER, user)
-  },
-  [types.ACTION_AUTH_LOGOUT]: async function ({ commit }: {commit: Function}) {
-    commit(types.MUTATION_AUTH_START_AUTHORIZING)
+  }
+  async logout() {
+    this.commit("startAuthorizing")
     const response = await AuthService.doLogout()
-    commit(types.MUTATION_AUTH_LOGOUT, response)
+    this.commit("logout", response)
   }
 }
-
-export default actions

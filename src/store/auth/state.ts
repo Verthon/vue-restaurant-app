@@ -14,5 +14,5 @@ export type AuthState = {
 export default class State {
   isAuthorized = false
   isAuthorizing = false
-  user = null
+  user: User | null = null
 }

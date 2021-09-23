@@ -1,4 +1,4 @@
-import { Module } from 'vuex-smart-module'
+import { createMapper, Module } from 'vuex-smart-module'
 
 import actions from './actions'
 import mutations from './mutations'
@@ -9,3 +9,5 @@ export const booking = new Module({
   actions,
   mutations
 })
+
+export const bookingMapper = createMapper(booking)

@@ -1,14 +1,13 @@
-import { Module } from 'vuex'
+import { createMapper, Module } from 'vuex-smart-module'
 
-import { RootState } from '../types'
 import actions from './actions'
 import mutations from './mutations'
-import { MenuState, state } from './state'
+import state from './state'
 
-export const menu: Module<MenuState, RootState> = {
+export const menu = new Module({
   state,
   actions,
   mutations
-}
+})
 
-export default menu
+export const menuMapper = createMapper(menu)

@@ -62,4 +62,4 @@
 </div>
 </template>
 
-<script src="./ReviewBooking.js"></script>
+<script src="./ReviewBooking.ts" lang="ts"></script>

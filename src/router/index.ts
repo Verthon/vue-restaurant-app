@@ -7,7 +7,7 @@ import ReviewBooking from '@/views/ReviewBooking/ReviewBooking.vue'
 import Login from '@/views/Login/Login.vue'
 import Admin from '@/views/Admin/Admin.vue'
 
-import store from '@/store/index'
+import { store } from '@/store/index'
 
 Vue.use(VueRouter)
 

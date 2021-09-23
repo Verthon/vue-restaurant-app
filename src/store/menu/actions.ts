@@ -1,22 +1,24 @@
-import { ActionTree } from 'vuex'
+import { Actions, Getters } from 'vuex-smart-module'
 
 import MenuService from '@/services/MenuService'
 import { getData } from '@/utils/firestore'
-import * as types from '@/types/store'
 
-import { MenuState } from './state'
-import { RootState } from '../types'
+import State from './state'
+import BookingMutations from './mutations'
 
-const actions: ActionTree<MenuState, RootState> = {
-  [types.ACTION_MENU_SET]: async function ({ commit }: {commit: Function}) {
+export default class MenuActions extends Actions<
+  State,
+  Getters<State>,
+  BookingMutations,
+  MenuActions
+> {
+  async getMenu() {
     try {
       const response = await MenuService.getMenu()
       const data = getData(response)
-      commit(types.MUTATION_MENU_SET, data)
+      this.commit("setMenu", data as any)
     } catch (error) {
       console.error('error', error)
     }
   }
 }
-
-export default actions
