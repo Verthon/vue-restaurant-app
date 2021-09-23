@@ -13,12 +13,12 @@ export default class BookingActions extends Actions<
   BookingMutations,
   BookingActions
 > {
-  async addBooking(booking: Booking) {
+  async addBooking (booking: Booking) {
     try {
       await BookingService.addBooking(booking)
-      this.commit("addBooking", booking)
+      this.commit('addBooking', booking)
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error)
     }
   }
 }

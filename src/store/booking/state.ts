@@ -1,4 +1,4 @@
-import { Booking } from "@/services/BookingService.types";
+import { Booking } from '@/services/BookingService.types'
 
 export default class State {
   currentBooking: Booking = {
@@ -9,5 +9,6 @@ export default class State {
     confirmed: false,
     createdAt: ''
   };
+
   bookings: Booking[] = []
 }
