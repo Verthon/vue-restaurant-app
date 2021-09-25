@@ -4,7 +4,7 @@ import { MenuData } from '@/services/MenuSevice.types'
 import { MenuState } from './state'
 
 export default class MenuMutations extends Mutations<MenuState> {
-  setMenu(menu: MenuData[]) {
+  setMenu (menu: MenuData[]) {
     this.state.menu = menu
   }
 }

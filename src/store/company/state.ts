@@ -4,6 +4,7 @@ export default class State {
     email: 'alkinoos-taverna@gmail.com',
     phone: '+1 555-555-555'
   }
+
   hours = {
     weekdays: {
       days: 'Monday - Friday',
@@ -14,6 +15,7 @@ export default class State {
       time: '12:00am - 10:00pm'
     }
   }
+
   location = {
     address: '23 Main Avenue',
     city: 'Montréal',
