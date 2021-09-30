@@ -3,6 +3,6 @@ import { Booking } from './BookingService.types'
 
 export default {
   async addBooking (booking: Booking) {
-    return db.collection('bookings').add(booking)
+    return await db.collection('bookings').add(booking)
   }
 }

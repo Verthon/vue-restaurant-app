@@ -5,8 +5,14 @@ import { splitDate, formatDate, convertToDate, splitTime } from '@/utils/date'
 import about from '@/assets/landing/brooke-lark-about.jpg'
 import { companyMapper } from '@/store/company'
 import { bookingMapper } from '@/store/booking'
+
+declare interface Data {
+  edit: boolean;
+  image: string;
+}
+
 export default Vue.extend({
-  data () {
+  data (): Data {
     return {
       edit: false,
       image: about

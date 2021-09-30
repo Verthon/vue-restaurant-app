@@ -7,6 +7,27 @@ import Button from '@/components/Button/Button.vue'
 import img from '@/assets/landing/brooke-lark-book-table.jpg'
 import { authMapper } from '@/store/auth'
 
+// Any properties that are set in the `data()` return object should go here.
+interface Data {
+  loginImg: string;
+      email: string;
+      password: string;
+      error: string;
+      links: [
+        { name: 'Menu'; link: 'menu' },
+        { name: 'Book Table'; link: 'book-table' }
+      ];
+}
+
+// Any methods that are set in the "methods()" should go here.
+interface Methods {}
+
+// Any properties that are set in the "computed()" should go here.
+interface Computed {}
+
+// Any component props should go here.
+interface Props {}
+
 export default Vue.extend({
   data: function () {
     return {
