@@ -1,3 +1,7 @@
+import { Mutations } from 'vuex-smart-module'
+
+import AuthState from './state'
+
 const setUser = (user: firebase.User) => ({
   email: user.email,
   name: user.displayName,
@@ -5,15 +9,12 @@ const setUser = (user: firebase.User) => ({
   metadata: user.metadata
 })
 
-import { Mutations } from 'vuex-smart-module'
-
-import AuthState from "./state";
-
 export default class AuthMutations extends Mutations<AuthState> {
-  startAuthorizing() {
+  startAuthorizing () {
     this.state.isAuthorizing = true
   }
-  login(payload: firebase.auth.UserCredential) {
+
+  login (payload: firebase.auth.UserCredential) {
     if (payload.user) {
       const user = setUser(payload.user)
       this.state.isAuthorizing = false
@@ -21,9 +22,9 @@ export default class AuthMutations extends Mutations<AuthState> {
       this.state.user = user
     }
   }
-  logout() {
+
+  logout () {
     this.state.isAuthorizing = false
     this.state.isAuthorized = false
   }
 }
-

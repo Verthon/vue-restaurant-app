@@ -12,20 +12,25 @@ export default class AuthActions extends Actions<
   BookingMutations,
   AuthActions
 > {
-  async login(credentials: Credentials) {
+  async login (credentials: Credentials) {
     try {
-      this.commit("startAuthorizing")
+      this.commit('startAuthorizing')
       const response = await AuthService.doLogin(credentials.email, credentials.password)
       if (response) {
-        this.commit("login", response)
+        this.commit('login', response)
       }
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error)
     }
   }
-  async logout() {
-    this.commit("startAuthorizing")
-    const response = await AuthService.doLogout()
-    this.commit("logout", response)
+
+  async logout () {
+    try {
+      this.commit('startAuthorizing')
+      const response = await AuthService.doLogout()
+      this.commit('logout', response)
+    } catch (error) {
+      console.log('error', error)
+    }
   }
 }
