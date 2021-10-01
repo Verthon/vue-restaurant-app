@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { firestorePlugin } from 'vuefire'
+import VueCompositionAPI from '@vue/composition-api'
 
 import App from './App.vue'
 import router from './router'
@@ -12,6 +13,8 @@ import * as types from '@/types/store'
 Vue.config.productionTip = false
 
 Vue.use(firestorePlugin)
+
+Vue.use(VueCompositionAPI)
 
 const requireComponent = require.context(
   // Look for files in the current directory
