@@ -25,8 +25,12 @@ export default class AuthActions extends Actions<
   }
 
   async logout () {
-    this.commit('startAuthorizing')
-    const response = await AuthService.doLogout()
-    this.commit('logout', response)
+    try {
+      this.commit('startAuthorizing')
+      const response = await AuthService.doLogout()
+      this.commit('logout', response)
+    } catch (error) {
+      console.log('error', error)
+    }
   }
 }

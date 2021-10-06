@@ -48,7 +48,8 @@ export default Vue.extend({
   },
   methods: {
     ...authMapper.mapActions({
-      doLogin: 'login'
+      doLogin: 'login',
+      doLogout: 'logout'
     }),
     handleSubmit: async function () {
       const credentials = {
@@ -57,6 +58,9 @@ export default Vue.extend({
       }
       await this.doLogin(credentials)
       this.$router.push({ path: 'admin' })
+    },
+    logout: async function () {
+      await this.doLogout()
     }
   },
   components: {

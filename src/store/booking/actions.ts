@@ -1,4 +1,3 @@
-import { ActionTree } from 'vuex'
 import { Actions, Getters } from 'vuex-smart-module'
 
 import BookingService from '@/services/BookingService'
