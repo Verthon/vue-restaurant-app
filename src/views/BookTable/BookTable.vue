@@ -35,4 +35,4 @@
   </div>
 </template>
 
-<script src="./BookTable.js"></script>
+<script src="./BookTable.js" lang="ts"></script>

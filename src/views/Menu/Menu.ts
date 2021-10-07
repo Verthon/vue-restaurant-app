@@ -1,9 +1,9 @@
-import Vue from 'vue'
+import { defineComponent } from '@vue/composition-api'
 
 import MenuList from '@/components/Menu/MenuList/MenuList.vue'
 import Navbar from '@/components/Navbar/Navbar.vue'
 import { menuMapper } from '@/store/menu'
-export default Vue.extend({
+export default defineComponent({
   data () {
     return {
       links: [

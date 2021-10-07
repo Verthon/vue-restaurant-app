@@ -1,4 +1,5 @@
-import Vue from 'vue'
+import { defineComponent } from '@vue/composition-api'
+
 import EditForm from '@/components/Forms/EditForm/EditForm.vue'
 import Button from '@/components/Button/Button.vue'
 import { splitDate, formatDate, convertToDate, splitTime } from '@/utils/date'
@@ -6,13 +7,8 @@ import about from '@/assets/landing/brooke-lark-about.jpg'
 import { companyMapper } from '@/store/company'
 import { bookingMapper } from '@/store/booking'
 
-declare interface Data {
-  edit: boolean;
-  image: string;
-}
-
-export default Vue.extend({
-  data (): Data {
+export default defineComponent({
+  data () {
     return {
       edit: false,
       image: about
@@ -26,11 +22,11 @@ export default Vue.extend({
       location: (state) => state.location,
       hours: (state) => state.hours
     }),
-    renderDate: function () {
+    renderDate () {
       const date = this.currentBooking.date
       return splitDate(formatDate(convertToDate(date)))
     },
-    renderTime: function () {
+    renderTime () {
       const date = this.currentBooking.date
       return splitTime(formatDate(convertToDate(date)))
     }
@@ -42,7 +38,7 @@ export default Vue.extend({
     handleSubmit: async function () {
       this.saveBooking(this.currentBooking)
     },
-    handleEdit: function (e: { preventDefault: () => void }) {
+    handleEdit (e: { preventDefault: () => void }) {
       e.preventDefault()
       this.edit = true
     }

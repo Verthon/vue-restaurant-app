@@ -15,8 +15,6 @@ Vue.config.productionTip = false
 Vue.use(firestorePlugin)
 Vue.use(VueCompositionAPI)
 
-Vue.use(VueCompositionAPI)
-
 const requireComponent = require.context(
   // Look for files in the current directory
   '.',

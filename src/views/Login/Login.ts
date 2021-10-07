@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { defineComponent } from '@vue/composition-api'
 
 import Navbar from '@/components/Navbar/Navbar.vue'
 import Input from '@/components/Forms/Input/Input.vue'
@@ -19,16 +19,7 @@ interface Data {
       ];
 }
 
-// Any methods that are set in the "methods()" should go here.
-interface Methods {}
-
-// Any properties that are set in the "computed()" should go here.
-interface Computed {}
-
-// Any component props should go here.
-interface Props {}
-
-export default Vue.extend({
+export default defineComponent({
   data: function () {
     return {
       loginImg: img,
