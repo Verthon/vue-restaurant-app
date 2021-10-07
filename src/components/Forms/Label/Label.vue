@@ -1,5 +1,5 @@
-<template>
-  <label for="for" class="label">
+<template functional>
+  <label :for="props.for" class="label">
     <slot/>
   </label>
 </template>

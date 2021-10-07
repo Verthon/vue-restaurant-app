@@ -1,20 +1,18 @@
-<template>
+<template functional>
   <button
-    v-bind="$attrs"
     v-on="$listeners"
     class="btn"
     :class="{
-      'btn--dark': variant === 'dark',
-      'btn--light': variant === 'light',
-      'btn--transparent': variant === 'transparent',
-      'btn--small': size === 'small',
-      'btn--large': size === 'large',
+      'btn--dark': props.variant === 'dark',
+      'btn--light': props.variant === 'light',
+      'btn--transparent': props.variant === 'transparent',
+      'btn--small': props.size === 'small',
+      'btn--large': props.size === 'large',
     }"
-    :type="type"
+    :type="props.type"
   >
     <slot />
   </button>
 </template>
 
-<script src="./Button.js"></script>
 <style src="./Button.scss" lang="scss"></style>

@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <button
       class="nav__btn"
       type="button"
@@ -7,7 +7,7 @@
       aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
-      @click="$emit('toggle-navbar')"
+      @click="parent.$emit('toggle-navbar')"
     >
       <span class="btn__line" />
       <span class="btn__line" />

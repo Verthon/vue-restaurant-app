@@ -8,5 +8,5 @@
   </nav>
 </template>
 
-<script src="./Navbar.js"></script>
+<script src="./Navbar.ts" lang="ts"></script>
 <style src="./Navbar.scss" lang="scss"></style>

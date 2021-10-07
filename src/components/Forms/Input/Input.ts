@@ -1,4 +1,6 @@
-export default {
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
   props: {
     placeholder: String,
     required: {
@@ -8,8 +10,8 @@ export default {
     value: [String, Number]
   },
   methods: {
-    updateValue (e) {
+    updateValue (e: HTMLInputElement) {
       this.$emit('input', e.target.value)
     }
   }
-}
+})
