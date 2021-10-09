@@ -14,7 +14,6 @@ export default defineComponent({
   },
   methods: {
     handleNavbarToggle () {
-      this.$emit('toggleNavbar')
       this.active = !this.active
     }
   },

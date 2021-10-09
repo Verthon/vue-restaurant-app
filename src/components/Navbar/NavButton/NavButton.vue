@@ -7,7 +7,7 @@
       aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
-      @click="parent.$emit('toggle-navbar')"
+      @click="listeners['toggleNavbar']"
     >
       <span class="btn__line" />
       <span class="btn__line" />
