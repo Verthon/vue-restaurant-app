@@ -3,31 +3,29 @@ import { defineComponent } from '@vue/composition-api'
 import EditForm from '@/components/Forms/EditForm/EditForm.vue'
 import Button from '@/components/Button/Button.vue'
 import { splitDate, formatDate, convertToDate, splitTime } from '@/utils/date'
-import about from '@/assets/landing/brooke-lark-about.jpg'
 import { companyMapper } from '@/store/company'
 import { bookingMapper } from '@/store/booking'
 
 export default defineComponent({
   data () {
     return {
-      edit: false,
-      image: about
+      edit: false
     }
   },
   computed: {
     ...bookingMapper.mapState({
-      currentBooking: (state) => state.currentBooking
+      booking: (state) => state.currentBooking
     }),
     ...companyMapper.mapState({
       location: (state) => state.location,
       hours: (state) => state.hours
     }),
     renderDate () {
-      const date = this.currentBooking.date
+      const date = this.booking.date as any
       return splitDate(formatDate(convertToDate(date)))
     },
     renderTime () {
-      const date = this.currentBooking.date
+      const date = this.booking.date as any
       return splitTime(formatDate(convertToDate(date)))
     }
   },
@@ -36,7 +34,7 @@ export default defineComponent({
       saveBooking: 'addBooking'
     }),
     handleSubmit: async function () {
-      this.saveBooking(this.currentBooking)
+      this.saveBooking(this.booking)
     },
     handleEdit (e: { preventDefault: () => void }) {
       e.preventDefault()

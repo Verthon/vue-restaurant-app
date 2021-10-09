@@ -10,7 +10,7 @@ export default defineComponent({
     value: [String, Number]
   },
   methods: {
-    updateValue (e: HTMLInputElement) {
+    updateValue (e: any) {
       this.$emit('input', e.target.value)
     }
   }

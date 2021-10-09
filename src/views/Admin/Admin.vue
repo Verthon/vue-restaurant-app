@@ -6,4 +6,4 @@
   </div>
 </template>
 
-<script src="./Admin.js" lang="ts"></script>
+<script src="./Admin.ts" lang="ts"></script>

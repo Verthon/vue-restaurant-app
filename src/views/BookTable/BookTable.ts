@@ -1,4 +1,3 @@
-import bookTableImg from '@/assets/brooke-lark-book-table.jpg'
 import Navbar from '@/components/Navbar/Navbar.vue'
 import Form from '@/components/Forms/Form/Form.vue'
 
@@ -27,8 +26,7 @@ export default {
       },
       contact: {
         phone: '+1 555 555 555'
-      },
-      image: bookTableImg
+      }
     }
   },
   components: {

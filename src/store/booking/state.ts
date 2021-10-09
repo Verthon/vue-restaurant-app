@@ -3,7 +3,7 @@ import { Booking } from '@/services/BookingService.types'
 export type BookingStatus = 'idle' | 'loading' | 'error' | 'success'
 
 export default class State {
-  currentBooking: Booking = {
+  currentBooking = {
     name: '',
     email: '',
     date: '',

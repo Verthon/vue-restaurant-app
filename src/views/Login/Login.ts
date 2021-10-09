@@ -4,25 +4,11 @@ import Navbar from '@/components/Navbar/Navbar.vue'
 import Input from '@/components/Forms/Input/Input.vue'
 import Label from '@/components/Forms/Label/Label.vue'
 import Button from '@/components/Button/Button.vue'
-import img from '@/assets/landing/brooke-lark-book-table.jpg'
 import { authMapper } from '@/store/auth'
-
-// Any properties that are set in the `data()` return object should go here.
-interface Data {
-  loginImg: string;
-      email: string;
-      password: string;
-      error: string;
-      links: [
-        { name: 'Menu'; link: 'menu' },
-        { name: 'Book Table'; link: 'book-table' }
-      ];
-}
 
 export default defineComponent({
   data: function () {
     return {
-      loginImg: img,
       email: '',
       password: '',
       error: '',
