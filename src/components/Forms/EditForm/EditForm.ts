@@ -1,9 +1,10 @@
 import { mapState, mapActions } from 'vuex'
 import Datepicker from 'vuejs-datepicker'
+import { defineComponent } from '@vue/composition-api'
 
 import Input from '@/components/Forms/Input/Input.vue'
 import Label from '@/components/Forms/Label/Label.vue'
-export default {
+export default defineComponent({
   components: {
     Datepicker,
     Input,
@@ -18,4 +19,4 @@ export default {
   computed: mapState({
     booking: 'booking'
   })
-}
+})

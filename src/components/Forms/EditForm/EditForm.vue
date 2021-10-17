@@ -26,4 +26,4 @@
   </form>
 </template>
 
-<script src="./EditForm.js"></script>
+<script src="./EditForm.ts"></script>

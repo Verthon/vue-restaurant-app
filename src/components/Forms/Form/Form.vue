@@ -30,4 +30,4 @@
   </form>
 </template>
 
-<script src="./Form.js"></script>
+<script src="./Form.ts" lang="ts"></script>
