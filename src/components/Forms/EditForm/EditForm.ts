@@ -1,22 +1,31 @@
-import { mapState, mapActions } from 'vuex'
 import Datepicker from 'vuejs-datepicker'
 import { defineComponent } from '@vue/composition-api'
 
 import Input from '@/components/Forms/Input/Input.vue'
 import Label from '@/components/Forms/Label/Label.vue'
+import { bookingMapper } from '@/store/booking'
+
 export default defineComponent({
   components: {
     Datepicker,
     Input,
     Label
   },
-  methods: {
-    ...mapActions('booking', ['add']),
-    handleSubmit () {
-      this.$store.dispatch('booking/add', this.booking)
-    }
+  computed: {
+    ...bookingMapper.mapState({
+      booking: (state) => state.currentBooking,
+      name: (state) => state.currentBooking.name,
+      email: (state) => state.currentBooking.email,
+      date: (state) => state.currentBooking.date,
+      guests: (state) => state.currentBooking.guests
+    })
   },
-  computed: mapState({
-    booking: 'booking'
-  })
+  methods: {
+    ...bookingMapper.mapActions({
+      addBooking: 'addBooking'
+    }),
+    handleSubmit () {
+      this.addBooking(this.booking)
+    }
+  }
 })
