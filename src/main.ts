@@ -4,11 +4,10 @@ import VueCompositionAPI from '@vue/composition-api'
 
 import App from './App.vue'
 import router from './router'
-import { store } from './store'
+import { store, root } from './store'
 import { i18n } from '@/i18n'
 import '@/styles/index.scss'
 import firebase from 'firebase'
-import * as types from '@/types/store'
 
 Vue.config.productionTip = false
 
@@ -46,9 +45,9 @@ requireComponent.keys().forEach((fileName) => {
 })
 
 firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    store.dispatch(types.ACTION_AUTH_SET_USER, user)
-  }
+  const ctx = root.context(store)
+  ctx.modules.auth.commit('restoreUser', user)
+
   new Vue({
     i18n,
     router,

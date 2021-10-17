@@ -7,7 +7,7 @@ import ReviewBooking from '@/views/ReviewBooking/ReviewBooking.vue'
 import Login from '@/views/Login/Login.vue'
 import Admin from '@/views/Admin/Admin.vue'
 
-import { store } from '@/store/index'
+import { root, store } from '@/store/index'
 
 Vue.use(VueRouter)
 
@@ -42,7 +42,10 @@ const routes: Array<RouteConfig> = [
     name: 'Admin',
     component: Admin,
     beforeEnter: (to, from, next) => {
-      if (!store.state.auth.isAuthorized && !store.state.auth.user) next({ name: 'Login' })
+      const ctx = root.context(store)
+      console.log(ctx.modules.auth.state)
+      const notAuthorized = !ctx.modules.auth.state.isAuthorized && !ctx.modules.auth.state.user
+      if (notAuthorized) next({ name: 'Login' })
       else next()
     }
   }

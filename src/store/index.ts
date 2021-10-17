@@ -9,7 +9,7 @@ import { auth } from '@/store/auth'
 
 Vue.use(Vuex)
 
-const root = new Module({
+export const root = new Module({
   namespaced: false,
   modules: {
     booking,

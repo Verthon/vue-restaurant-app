@@ -27,4 +27,15 @@ export default class AuthMutations extends Mutations<AuthState> {
     this.state.isAuthorizing = false
     this.state.isAuthorized = false
   }
+
+  restoreUser (payload: firebase.User | null) {
+    if (payload && payload) {
+      const user = setUser(payload)
+      this.state.isAuthorizing = false
+      this.state.isAuthorized = true
+      this.state.user = user
+    } else {
+      this.state.user = null
+    }
+  }
 }

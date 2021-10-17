@@ -24,7 +24,7 @@
       </div>
       <div class="section section__col">
         <picture>
-          <img :src="loginImg" alt="" class="table-booking__image" />
+          <!-- <img :src="loginImg" alt="" class="table-booking__image" /> -->
         </picture>
       </div>
     </div>

@@ -7,7 +7,7 @@ import Button from '@/components/Button/Button.vue'
 import { authMapper } from '@/store/auth'
 
 export default defineComponent({
-  data: function () {
+  data () {
     return {
       email: '',
       password: '',
@@ -28,7 +28,7 @@ export default defineComponent({
       doLogin: 'login',
       doLogout: 'logout'
     }),
-    handleSubmit: async function () {
+    async handleSubmit () {
       const credentials = {
         email: this.email,
         password: this.password
@@ -36,7 +36,7 @@ export default defineComponent({
       await this.doLogin(credentials)
       this.$router.push({ path: 'admin' })
     },
-    logout: async function () {
+    async logout () {
       await this.doLogout()
     }
   },
