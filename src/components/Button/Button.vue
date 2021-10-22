@@ -1,5 +1,5 @@
 <template functional>
-  <button
+  <b-button
     v-on="$listeners"
     class="btn"
     :class="{
@@ -12,7 +12,7 @@
     :type="props.type"
   >
     <slot />
-  </button>
+  </b-button>
 </template>
 
 <style src="./Button.scss" lang="scss"></style>
