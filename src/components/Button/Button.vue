@@ -1,18 +1,16 @@
-<template functional>
+<template>
   <b-button
-    v-on="$listeners"
-    class="btn"
-    :class="{
-      'btn--dark': props.variant === 'dark',
-      'btn--light': props.variant === 'light',
-      'btn--transparent': props.variant === 'transparent',
-      'btn--small': props.size === 'small',
-      'btn--large': props.size === 'large',
-    }"
-    :type="props.type"
+    @click="handleClick"
+    :type="currentType"
+    :loading="loading"
+    :disabled="disabled"
+    :native-type="nativeType"
+    :outlined="outlined"
+    :size="size"
   >
     <slot />
   </b-button>
 </template>
 
+<script src="./Button.ts" lnag="ts"></script>
 <style src="./Button.scss" lang="scss"></style>
