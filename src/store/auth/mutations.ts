@@ -1,5 +1,6 @@
-import * as types from '@/types/store'
-import { AuthState } from './state'
+import { Mutations } from 'vuex-smart-module'
+
+import AuthState from './state'
 
 const setUser = (user: firebase.User) => ({
   email: user.email,
@@ -8,26 +9,33 @@ const setUser = (user: firebase.User) => ({
   metadata: user.metadata
 })
 
-export default {
-  [types.MUTATION_AUTH_START_AUTHORIZING] (state: AuthState) {
-    state.isAuthorizing = true
-  },
-  [types.MUTATION_AUTH_LOGIN] (state: AuthState, payload: firebase.auth.UserCredential) {
+export default class AuthMutations extends Mutations<AuthState> {
+  startAuthorizing () {
+    this.state.isAuthorizing = true
+  }
+
+  login (payload: firebase.auth.UserCredential) {
     if (payload.user) {
       const user = setUser(payload.user)
-      state.isAuthorizing = false
-      state.isAuthorized = true
-      state.user = user
+      this.state.isAuthorizing = false
+      this.state.isAuthorized = true
+      this.state.user = user
     }
-  },
-  [types.MUTATION_AUTH_SET_USER] (state: AuthState, payload: firebase.User) {
-    const user = setUser(payload)
-    state.isAuthorizing = false
-    state.isAuthorized = true
-    state.user = user
-  },
-  [types.MUTATION_AUTH_LOGOUT] (state: AuthState) {
-    state.isAuthorizing = false
-    state.isAuthorized = false
+  }
+
+  logout () {
+    this.state.isAuthorizing = false
+    this.state.isAuthorized = false
+  }
+
+  restoreUser (payload: firebase.User | null) {
+    if (payload && payload) {
+      const user = setUser(payload)
+      this.state.isAuthorizing = false
+      this.state.isAuthorized = true
+      this.state.user = user
+    } else {
+      this.state.user = null
+    }
   }
 }

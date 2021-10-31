@@ -1,18 +1,17 @@
 import { Booking } from '@/services/BookingService.types'
 
-export type BookingState = {
-  currentBooking: Booking;
-  bookings: Booking[];
-}
+export type BookingStatus = 'idle' | 'loading' | 'error' | 'success'
 
-export const state: BookingState = {
-  currentBooking: {
+export default class State {
+  currentBooking = {
     name: '',
     email: '',
     date: '',
     guests: 1,
     confirmed: false,
     createdAt: ''
-  },
-  bookings: []
+  };
+
+  status: BookingStatus = 'idle';
+  bookings: Booking[] = []
 }

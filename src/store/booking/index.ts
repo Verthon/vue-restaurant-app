@@ -1,14 +1,13 @@
-import { Module } from 'vuex'
+import { createMapper, Module } from 'vuex-smart-module'
 
 import actions from './actions'
 import mutations from './mutations'
-import { RootState } from '../types'
-import { BookingState, state } from './state'
+import state from './state'
 
-const booking: Module<BookingState, RootState> = {
+export const booking = new Module({
   state,
   actions,
   mutations
-}
+})
 
-export default booking
+export const bookingMapper = createMapper(booking)

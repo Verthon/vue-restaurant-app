@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import { MutationTree } from 'vuex'
+=======
+import { Mutations } from 'vuex-smart-module'
+>>>>>>> master
 
+import BookingState, { BookingStatus } from './state'
 import { Booking } from '@/services/BookingService.types'
 
+<<<<<<< HEAD
 import { BookingState } from './state'
 
 export enum BookingMutation {
@@ -16,6 +22,19 @@ const mutations: MutationTree<BookingState> = {
   },
   [BookingMutation.BOOKING_EDIT] (state: BookingState, booking: Booking) {
     state.currentBooking = booking
+=======
+export default class BookingMutations extends Mutations<BookingState> {
+  addBooking (booking: Booking) {
+    this.state.currentBooking = booking
+  }
+
+  changeBookingStatus (status: BookingStatus) {
+    this.state.status = status
+  }
+
+  editBooking (booking: Booking) {
+    this.state.currentBooking = booking
+>>>>>>> master
   }
 }
 

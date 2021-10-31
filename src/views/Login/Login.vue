@@ -17,19 +17,19 @@
           <p class="login__error">
             {{error ? $t('ERROR_MESSAGE.LOGIN') : null}}
           </p>
-          <Button data-testid="login-submit" type="submit" variant="dark" size="large" :disabled="auth.isAuthorized">
+          <Button data-testid="login-submit" type="submit" variant="dark" size="large" :disabled="isAuthorized">
             {{$t('CORE.LOGIN')}}
           </Button>
         </form>
       </div>
       <div class="section section__col">
         <picture>
-          <img :src="loginImg" alt="" class="table-booking__image" />
+          <!-- <img :src="loginImg" alt="" class="table-booking__image" /> -->
         </picture>
       </div>
     </div>
   </div>
 </template>
 
-<script src="./Login.js"></script>
+<script src="./Login.ts" lang="ts"></script>
 <style src="./Login.scss" lang="scss"></style>

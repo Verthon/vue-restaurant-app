@@ -1,13 +1,15 @@
-import { MutationTree } from 'vuex'
+import { Mutations } from 'vuex-smart-module'
 
-import * as types from '@/types/store'
 import { MenuData } from '@/services/MenuSevice.types'
-import { MenuState } from './state'
+import { FetchStatus } from '@/types/api'
+import MenuState from './state'
 
-const mutations: MutationTree<MenuState> = {
-  [types.MUTATION_MENU_SET] (state: MenuState, menu: MenuData[]) {
-    state.menu = menu
+export default class MenuMutations extends Mutations<MenuState> {
+  setMenuStatus (status: FetchStatus) {
+    this.state.status = status
+  }
+
+  setMenu (menu: MenuData[]) {
+    this.state.menu = menu
   }
 }
-
-export default mutations

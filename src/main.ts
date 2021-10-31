@@ -1,20 +1,20 @@
 import Vue from 'vue'
 import { firestorePlugin } from 'vuefire'
 import VueCompositionAPI from '@vue/composition-api'
-import { i18n } from '@/i18n'
+import Buefy from 'buefy'
 
 import App from './App.vue'
 import router from './router'
-import store from './store'
-import 'vue2-datepicker/index.css'
+import { store, root } from './store'
+import { i18n } from '@/i18n'
 import '@/styles/index.scss'
 import firebase from 'firebase'
-import * as types from '@/types/store'
 
 Vue.config.productionTip = false
 
 Vue.use(firestorePlugin)
 Vue.use(VueCompositionAPI)
+Vue.use(Buefy)
 
 const requireComponent = require.context(
   // Look for files in the current directory
@@ -47,9 +47,9 @@ requireComponent.keys().forEach((fileName) => {
 })
 
 firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    store.dispatch(types.ACTION_AUTH_SET_USER, user)
-  }
+  const ctx = root.context(store)
+  ctx.modules.auth.commit('restoreUser', user)
+
   new Vue({
     i18n,
     router,

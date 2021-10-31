@@ -4,4 +4,4 @@
   </ul>
 </template>
 
-<script src="./NavList.js"></script>
+<script src="./NavList.ts" lang="ts"></script>

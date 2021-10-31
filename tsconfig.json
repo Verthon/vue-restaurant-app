@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es5",
     "module": "esnext",
     "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "jsx": "preserve",
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -40,5 +42,9 @@
 , "src/components/Forms/EditForm/EditForm.js"  ],
   "exclude": [
     "node_modules"
+  ],
+  "typeRoots": [
+    "./node_modules/@types",
+    "./typings"
   ]
 }

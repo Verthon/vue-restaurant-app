@@ -1,19 +1,18 @@
-import { mapState, mapActions } from 'vuex'
+import { defineComponent } from '@vue/composition-api'
+
 import Navbar from '@/components/Navbar/Navbar.vue'
 import Button from '@/components/Button/Button.vue'
-import * as types from '@/types/store'
-export default {
+import { authMapper } from '@/store/auth'
+
+export default defineComponent({
   links: [
     { name: 'Menu', link: 'menu' },
     { name: 'Book Table', link: 'book-table' }
   ],
-  computed: {
-    ...mapState({
-      auth: (state) => state.auth
-    })
-  },
   methods: {
-    ...mapActions({ doLogout: types.ACTION_AUTH_LOGOUT }),
+    ...authMapper.mapActions({
+      doLogout: 'logout'
+    }),
     async handleLogout () {
       await this.doLogout()
       this.$router.push({ path: '/' })
@@ -23,4 +22,4 @@ export default {
     Navbar,
     Button
   }
-}
+})

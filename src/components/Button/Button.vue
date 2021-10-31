@@ -1,20 +1,16 @@
 <template>
-  <button
-    v-bind="$attrs"
-    v-on="$listeners"
-    class="btn"
-    :class="{
-      'btn--dark': variant === 'dark',
-      'btn--light': variant === 'light',
-      'btn--transparent': variant === 'transparent',
-      'btn--small': size === 'small',
-      'btn--large': size === 'large',
-    }"
-    :type="type"
+  <b-button
+    @click="handleClick"
+    :type="currentType"
+    :loading="loading"
+    :disabled="disabled"
+    :native-type="nativeType"
+    :outlined="outlined"
+    :size="size"
   >
     <slot />
-  </button>
+  </b-button>
 </template>
 
-<script src="./Button.js"></script>
+<script src="./Button.ts" lnag="ts"></script>
 <style src="./Button.scss" lang="scss"></style>

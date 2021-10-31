@@ -1,7 +1,8 @@
+import { defineComponent } from '@vue/composition-api'
 import NavButton from './NavButton/NavButton.vue'
 import NavList from './NavList/NavList.vue'
 
-export default {
+export default defineComponent({
   data () {
     return {
       firstRender: true,
@@ -13,7 +14,6 @@ export default {
   },
   methods: {
     handleNavbarToggle () {
-      this.$emit('toggleNavbar')
       this.active = !this.active
     }
   },
@@ -21,4 +21,4 @@ export default {
     NavButton,
     NavList
   }
-}
+})

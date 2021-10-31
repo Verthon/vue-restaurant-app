@@ -24,10 +24,14 @@
       name="guests"
       required
     />
-    <Button id="booking-submit" type="submit" variant="dark" size="large">{{
+    <Button id="booking-submit" nativeType="submit" type="primary" size="large" disabled>{{
       $t("CORE.SUBMIT")
     }}</Button>
   </form>
 </template>
 
+<<<<<<< HEAD
 <script src="./Form.js" lang="ts"></script>
+=======
+<script src="./Form.ts" lang="ts"></script>
+>>>>>>> master

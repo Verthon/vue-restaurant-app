@@ -1,14 +1,14 @@
-import { mapActions, mapState } from 'vuex'
+import { defineComponent } from '@vue/composition-api'
+
 import Navbar from '@/components/Navbar/Navbar.vue'
 import Input from '@/components/Forms/Input/Input.vue'
 import Label from '@/components/Forms/Label/Label.vue'
 import Button from '@/components/Button/Button.vue'
-import img from '@/assets/landing/brooke-lark-book-table.jpg'
-import * as types from '@/types/store'
-export default {
-  data: function () {
+import { authMapper } from '@/store/auth'
+
+export default defineComponent({
+  data () {
     return {
-      loginImg: img,
       email: '',
       password: '',
       error: '',
@@ -19,19 +19,25 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      auth: (state) => state.auth
+    ...authMapper.mapState({
+      isAuthorized: (state) => state.isAuthorized
     })
   },
   methods: {
-    ...mapActions({ doLogin: types.ACTION_AUTH_LOGIN }),
-    handleSubmit: async function () {
+    ...authMapper.mapActions({
+      doLogin: 'login',
+      doLogout: 'logout'
+    }),
+    async handleSubmit () {
       const credentials = {
         email: this.email,
         password: this.password
       }
       await this.doLogin(credentials)
       this.$router.push({ path: 'admin' })
+    },
+    async logout () {
+      await this.doLogout()
     }
   },
   components: {
@@ -40,4 +46,4 @@ export default {
     Label,
     Button
   }
-}
+})

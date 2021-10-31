@@ -1,26 +1,27 @@
 import Vue from 'vue'
-import Vuex, { Store, StoreOptions } from 'vuex'
+import Vuex from 'vuex'
+import { createStore, Module } from 'vuex-smart-module'
 
-import booking from '@/store/booking'
-import menu from '@/store/menu'
-import company from '@/store/company'
-import auth from '@/store/auth'
-import { RootState } from './types'
+import { booking } from '@/store/booking'
+import { menu } from '@/store/menu'
+import { company } from '@/store/company'
+import { auth } from '@/store/auth'
 
 Vue.use(Vuex)
 
-const rootState = {} as RootState
-
-const storeConfig: StoreOptions<RootState> = {
-  state: rootState,
+export const root = new Module({
+  namespaced: false,
   modules: {
-    auth,
     booking,
-    menu,
-    company
+    company,
+    auth,
+    menu
   }
-}
+})
 
-const store: Store<RootState> = new Vuex.Store(storeConfig)
-
-export default store
+export const store = createStore(
+  root,
+  {
+    strict: process.env.NODE_ENV !== 'production'
+  }
+)

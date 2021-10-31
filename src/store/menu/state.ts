@@ -1,7 +1,7 @@
 import { MenuData } from '@/services/MenuSevice.types'
+import { FetchStatus } from '@/types/api'
 
-export type MenuState = { menu: MenuData[] }
-
-export const state: MenuState = {
-  menu: []
+export default class MenuState {
+  menu: MenuData[] = []
+  status: FetchStatus = 'idle'
 }

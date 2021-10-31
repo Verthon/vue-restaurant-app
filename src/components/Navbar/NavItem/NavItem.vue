@@ -1,15 +1,14 @@
-<template>
+<template functional>
   <li class="nav__item">
     <router-link
       class="nav__link"
       data-testid="navlink"
       activeClassName="nav__link--active"
-      :to="link"
+      :to="props.link"
     >
-      {{ name }}
+      {{ props.name }}
     </router-link>
   </li>
 </template>
 
-<script src="./NavItem.js"></script>
 <style src="./NavItem.scss" lang="scss"></style>
