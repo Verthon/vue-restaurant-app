@@ -1,7 +1,6 @@
 import { Actions, Getters } from 'vuex-smart-module'
 
 import MenuService from '@/services/MenuService'
-import { getData } from '@/utils/firestore'
 
 import State from './state'
 import MenuMutations from './mutations'
@@ -15,9 +14,8 @@ export default class MenuActions extends Actions<
   async getMenu () {
     try {
       this.commit('setMenuStatus', 'loading')
-      const response = await MenuService.getMenu()
-      const data = getData(response)
-      this.commit('setMenu', data as any)
+      const response = await MenuService.fetchMenu()
+      this.commit('setMenu', response.data as any)
       this.commit('setMenuStatus', 'complete')
     } catch (error) {
       this.commit('setMenuStatus', 'error')

@@ -2,7 +2,7 @@ import { Mutations } from 'vuex-smart-module'
 
 import AuthState from './state'
 
-const setUser = (user: firebase.User) => ({
+const setUser = (user: any) => ({
   email: user.email,
   name: user.displayName,
   photoUrl: user.photoURL,
@@ -14,7 +14,7 @@ export default class AuthMutations extends Mutations<AuthState> {
     this.state.isAuthorizing = true
   }
 
-  login (payload: firebase.auth.UserCredential) {
+  login (payload: any) {
     if (payload.user) {
       const user = setUser(payload.user)
       this.state.isAuthorizing = false
@@ -28,7 +28,7 @@ export default class AuthMutations extends Mutations<AuthState> {
     this.state.isAuthorized = false
   }
 
-  restoreUser (payload: firebase.User | null) {
+  restoreUser (payload: any | null) {
     if (payload && payload) {
       const user = setUser(payload)
       this.state.isAuthorizing = false

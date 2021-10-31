@@ -1,18 +1,15 @@
 import Vue from 'vue'
-import { firestorePlugin } from 'vuefire'
 import VueCompositionAPI from '@vue/composition-api'
 import Buefy from 'buefy'
 
 import App from './App.vue'
 import router from './router'
-import { store, root } from './store'
+import { store } from './store'
 import { i18n } from '@/i18n'
 import '@/styles/index.scss'
-import firebase from 'firebase'
 
 Vue.config.productionTip = false
 
-Vue.use(firestorePlugin)
 Vue.use(VueCompositionAPI)
 Vue.use(Buefy)
 
@@ -46,14 +43,9 @@ requireComponent.keys().forEach((fileName) => {
   Vue.component(componentName, componentConfig.default || componentConfig)
 })
 
-firebase.auth().onAuthStateChanged(user => {
-  const ctx = root.context(store)
-  ctx.modules.auth.commit('restoreUser', user)
-
-  new Vue({
-    i18n,
-    router,
-    store,
-    render: h => h(App)
-  }).$mount('#app')
-})
+new Vue({
+  i18n,
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')

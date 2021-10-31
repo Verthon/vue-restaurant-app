@@ -2,7 +2,7 @@ type User = {
   email: string | null;
   name: string | null;
   photoUrl: string | null;
-  metadata: firebase.auth.UserMetadata;
+  metadata: {};
 }
 
 export type AuthState = {

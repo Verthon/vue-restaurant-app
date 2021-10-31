@@ -1,7 +1,8 @@
-import db from '@/firestore/firebase'
+import { supabase } from '@/lib/supabase'
+import { definitions } from '@/types/supabase'
 
 export default {
-  async getMenu () {
-    return db.collection('menu').get()
+  fetchMenu () {
+    return supabase.from<definitions['products']>('products').select('*')
   }
 }
