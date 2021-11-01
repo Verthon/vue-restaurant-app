@@ -30,8 +30,4 @@
   </form>
 </template>
 
-<<<<<<< HEAD
-<script src="./Form.js" lang="ts"></script>
-=======
 <script src="./Form.ts" lang="ts"></script>
->>>>>>> master

@@ -1,11 +1,9 @@
-import { firebase } from '@/firestore/firebase'
+export const auth = () => null
 
-export const auth = firebase.auth()
-
-export const doLogin = async (email: string, password: string) => {
-  return await firebase.auth().signInWithEmailAndPassword(email, password)
+export const doLogin = (email: string, password: string) => {
+  return new Promise(() => null)
 }
 
-export const doLogout = async () => {
-  return await firebase.auth().signOut()
+export const doLogout = () => {
+  return new Promise(() => null)
 }

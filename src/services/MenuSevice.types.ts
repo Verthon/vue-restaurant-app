@@ -1,3 +1,5 @@
+import { definitions } from '@/types/supabase'
+
 export type MenuData = {
   description: string;
   name: string;
@@ -12,3 +14,5 @@ export type MenuCategory = {
 }
 
 export type MenuState = MenuCategory[]
+
+export type Menu = definitions['products']

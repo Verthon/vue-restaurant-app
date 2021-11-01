@@ -2,30 +2,40 @@ import { defineComponent } from '@vue/composition-api'
 
 import MenuList from '@/components/Menu/MenuList/MenuList.vue'
 import Navbar from '@/components/Navbar/Navbar.vue'
-import { menuMapper } from '@/store/menu'
+import Loader from '@/components/Loader/Loader.vue'
+import { useMenu } from '@/composables/useMenu/useMenu'
+
 export default defineComponent({
+  name: 'Menu',
   components: {
     Navbar,
-    MenuList
+    MenuList,
+    Loader
   },
-  data () {
+  setup () {
+    const links = [
+      { name: 'Menu', link: 'menu' },
+      { name: 'Book Table', link: 'book-table' }
+    ]
+    const {
+      isLoading,
+      isError,
+      appetizers,
+      desserts,
+      mains,
+      salads,
+      drinks
+    } = useMenu()
+
     return {
-      links: [
-        { name: 'Menu', link: 'menu' },
-        { name: 'Book Table', link: 'book-table' }
-      ]
-    }
-  },
-  created () {
-    this.fetchMenu()
-  },
-  computed: menuMapper.mapState({
-    menu: (state) => state.menu
-  }),
-  methods: {
-    ...menuMapper.mapActions({ setMenu: 'getMenu' }),
-    fetchMenu () {
-      this.setMenu()
+      isLoading,
+      isError,
+      appetizers,
+      desserts,
+      mains,
+      salads,
+      drinks,
+      links
     }
   }
 })
