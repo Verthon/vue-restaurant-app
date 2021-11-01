@@ -431,7 +431,7 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: number;
-    created_at?: string;
+    created_at: string;
     name: string;
     email: string;
     message?: string;
@@ -445,9 +445,9 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: number;
-    created_at?: string;
-    name?: string;
-    description?: string;
+    created_at: string;
+    name: string;
+    description: string;
   };
   /** Products for menu and carts etc */
   products: {
@@ -456,13 +456,13 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: number;
-    created_at?: string;
+    created_at: string;
     updated_at?: string;
-    name?: string;
-    description?: string;
-    price?: number;
-    in_stock?: boolean;
-    sale?: boolean;
+    name: string;
+    description: string;
+    price: number;
+    in_stock: boolean;
+    sale: boolean;
     /**
      * Note:
      * This is a Foreign Key to `categories.id`.<fk table='categories' column='id'/>
@@ -476,9 +476,9 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: number;
-    created_at?: string;
-    author?: string;
-    description?: string;
+    created_at: string;
+    author: string;
+    description: string;
   };
 }
 
@@ -536,7 +536,3 @@ export interface parameters {
   'rowFilter.testimonials.author': string;
   'rowFilter.testimonials.description': string;
 }
-
-export interface operations {}
-
-export interface external {}

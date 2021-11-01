@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import { createStore, Module } from 'vuex-smart-module'
 
 import { booking } from '@/store/booking'
-import { menu } from '@/store/menu'
 import { company } from '@/store/company'
 import { auth } from '@/store/auth'
 
@@ -14,8 +13,7 @@ export const root = new Module({
   modules: {
     booking,
     company,
-    auth,
-    menu
+    auth
   }
 })
 

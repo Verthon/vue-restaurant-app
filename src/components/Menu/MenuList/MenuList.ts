@@ -1,7 +1,10 @@
 import MenuItem from '@/components/Menu/MenuItem/MenuItem.vue'
 export default {
   props: {
-    category: Object
+    category: {
+      type: Array,
+      default: () => []
+    }
   },
   components: {
     MenuItem

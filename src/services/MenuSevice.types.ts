@@ -15,4 +15,4 @@ export type MenuCategory = {
 
 export type MenuState = MenuCategory[]
 
-export type Menu = Required<definitions['products']>
+export type Menu = definitions['products']

@@ -2,7 +2,12 @@ import { supabase } from '@/lib/supabase'
 import { definitions } from '@/types/supabase'
 
 export default {
-  fetchMenu () {
-    return supabase.from<definitions['products']>('products').select('*')
+  async fetchMenu () {
+    const { data, error } = await supabase.from<definitions['products']>('products').select('*')
+    if (error) {
+      throw new Error(`${error.message}: ${error.details}`)
+    }
+
+    return data
   }
 }

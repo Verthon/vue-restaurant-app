@@ -1,5 +1,5 @@
-// @ts-nocheck
-import { ref } from '@vue/composition-api'
+import { reactive } from '@vue/composition-api'
+import { useQuery } from 'vue-query'
 
 import type { Menu } from '@/services/MenuSevice.types'
 import MenuService from '@/services/MenuService'
@@ -13,17 +13,26 @@ const CATEGORIES = {
 }
 
 export const useMenu = () => {
-  const fetchMenu = () => {
-    return MenuService.fetchMenu()
+  const { isLoading, isError, data } = useQuery('menu', MenuService.fetchMenu)
+  let appetizers = reactive<Menu[]>([])
+  let desserts = reactive<Menu[]>([])
+  let mains = reactive<Menu[]>([])
+  let salads = reactive<Menu[]>([])
+  let drinks = reactive<Menu[]>([])
+  console.log('data', data, data.value)
+
+  if (data && data.value) {
+    console.log('if')
+    appetizers = data.value.filter(item => item.category_id === CATEGORIES.appetizers)
+    desserts = data.value.filter(item => item.category_id === CATEGORIES.desserts)
+    mains = data.value.filter(item => item.category_id === CATEGORIES.mains)
+    salads = data.value.filter(item => item.category_id === CATEGORIES.salads)
+    drinks = data.value.filter(item => item.category_id === CATEGORIES.drinks)
   }
-  const menu = ref(fetchMenu())
-  const appetizers = ref(menu.value.filter(item => item.category_id === CATEGORIES.appetizers))
-  const desserts = menu.value.filter(item => item.category_id === CATEGORIES.desserts)
-  const mains = menu.value.filter(item => item.category_id === CATEGORIES.mains)
-  const salads = menu.value.filter(item => item.category_id === CATEGORIES.salads)
-  const drinks = menu.value.filter(item => item.category_id === CATEGORIES.drinks)
-  console.log(menu.value, appetizers)
+
   return {
+    isLoading,
+    isError,
     appetizers,
     desserts,
     mains,

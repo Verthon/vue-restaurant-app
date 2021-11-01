@@ -27,8 +27,4 @@
   </form>
 </template>
 
-<<<<<<< HEAD
-<script src="./EditForm.ts" lang="ts"></script>
-=======
 <script src="./EditForm.ts"></script>
->>>>>>> master
