@@ -43,7 +43,6 @@ const routes: Array<RouteConfig> = [
     component: Admin,
     beforeEnter: (to, from, next) => {
       const ctx = root.context(store)
-      console.log(ctx.modules.auth.state)
       const notAuthorized = !ctx.modules.auth.state.isAuthorized && !ctx.modules.auth.state.user
       if (notAuthorized) next({ name: 'Login' })
       else next()

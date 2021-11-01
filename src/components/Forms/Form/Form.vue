@@ -10,7 +10,7 @@
     <Label for="email">{{ $t("CORE.EMAIL") }}</Label>
     <Input v-model="booking.email" placeholder="Your email" name="email" required />
     <Label for="date">{{ $t("CORE.DATE") }}</Label>
-    <datepicker
+    <DatePicker
       v-model="booking.date"
       placeholder="Select a date"
       name="date"
