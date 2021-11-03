@@ -1,5 +1,6 @@
 import Datepicker from 'vuejs-datepicker'
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, ref } from '@vue/composition-api'
+import { useLocalStorage } from '@vueuse/core'
 
 import Input from '@/components/Forms/Input/Input.vue'
 import Label from '@/components/Forms/Label/Label.vue'
@@ -12,6 +13,11 @@ export default defineComponent({
     Input,
     Label,
     Button
+  },
+  setup () {
+    const storageBooking = ref({})
+    const t = useLocalStorage('booking', storageBooking)
+    return t
   },
   computed: bookingMapper.mapState({
     booking: (state) => state.currentBooking,

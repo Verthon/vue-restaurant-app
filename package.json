@@ -15,6 +15,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^1.25.2",
     "@vue/composition-api": "^1.2.3",
+    "@vueuse/core": "^6.7.4",
     "buefy": "^0.9.10",
     "core-js": "^3.15.2",
     "flush-promises": "^1.0.2",
