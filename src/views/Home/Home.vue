@@ -3,6 +3,7 @@
     <Navbar :links="links"/>
     <!-- <BaseChart /> -->
     <BaseApexChart />
+    <BaseD3Chart />
   </div>
 </template>
 
