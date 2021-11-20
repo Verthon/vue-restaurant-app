@@ -1,0 +1,9 @@
+.base-3d-chart {
+  max-width: 600px;
+ &__container {
+   background-color: $color-white;
+ }
+ &__bar {
+   fill: $chart-default-color;
+ }
+}
