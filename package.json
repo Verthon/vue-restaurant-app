@@ -10,7 +10,8 @@
     "test:types": "tsc --noEmit",
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-report": "vue-cli-service build --report"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.25.2",
