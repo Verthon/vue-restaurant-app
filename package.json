@@ -10,7 +10,8 @@
     "test:types": "tsc --noEmit",
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-report": "vue-cli-service build --report"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.25.2",
@@ -66,8 +67,8 @@
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-standard": "^4.1.0",
     "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.2",
+    "sass": "^1.46.0",
+    "sass-loader": "^10.2.0",
     "vue-loader": "^15.9.8",
     "vue-template-compiler": "^2.6.14"
   }
