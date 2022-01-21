@@ -69,6 +69,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.46.0",
     "sass-loader": "^10.2.0",
+    "storybook-addon-sass-postcss": "^0.1.0",
     "vue-loader": "^15.9.8",
     "vue-template-compiler": "^2.6.14"
   }

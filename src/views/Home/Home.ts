@@ -4,13 +4,15 @@ import BaseChart from '@/components/BaseChart/BaseChart.vue'
 import BaseApexChart from '@/components/BaseApexChart/BaseApexChart.vue'
 import BaseD3Chart from '@/components/BaseD3Chart/BaseD3Chart.vue'
 import Navbar from '@/components/Navbar/Navbar.vue'
+import DatePicker from '@/components/DatePicker/DatePicker.vue'
 
 export default defineComponent({
   components: {
     Navbar,
     BaseChart,
     BaseApexChart,
-    BaseD3Chart
+    BaseD3Chart,
+    DatePicker
   },
   data () {
     return {
