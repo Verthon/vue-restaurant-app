@@ -4,6 +4,7 @@
     <!-- <BaseChart /> -->
     <BaseApexChart />
     <BaseD3Chart />
+    <DatePicker locale="ar"/>
   </div>
 </template>
 
