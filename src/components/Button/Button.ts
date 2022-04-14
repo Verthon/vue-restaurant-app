@@ -21,6 +21,10 @@ export default defineComponent({
     size: {
       type: String,
       default: ''
+    },
+    loading: {
+      type: Boolean,
+      defaut: false
     }
   },
   computed: {
