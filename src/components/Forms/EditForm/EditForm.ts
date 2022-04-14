@@ -1,23 +1,26 @@
-import { mapState, mapActions } from 'vuex'
 import DatePicker from 'vue2-datepicker'
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, toRefs } from '@vue/composition-api'
 
 import Input from '@/components/Forms/Input/Input.vue'
 import Label from '@/components/Forms/Label/Label.vue'
-import { store } from '@/store'
+import { useBookingStore } from '@/store/booking/bookingStore'
+
 export default defineComponent({
   components: {
     DatePicker,
     Input,
     Label
   },
-  methods: {
-    ...mapActions('booking', ['add']),
-    handleSubmit () {
-      store.dispatch('booking', this.booking)
+  setup () {
+    const bookingStore = useBookingStore()
+    const { currentBooking } = toRefs(bookingStore)
+    const handleSubmit = () => {
+      bookingStore.createBooking(currentBooking.value)
     }
-  },
-  computed: mapState({
-    booking: 'booking'
-  })
+
+    return {
+      booking: currentBooking,
+      handleSubmit
+    }
+  }
 })

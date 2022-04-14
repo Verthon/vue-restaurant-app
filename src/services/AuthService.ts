@@ -1,11 +1,12 @@
 
+import { supabase } from '@/lib/supabase'
 import { Credentials } from './AuthService.types'
 
 export default {
   doLogin (email: Credentials['email'], password: Credentials['password']) {
-    return new Promise(() => 123)
+    return supabase.auth.signIn({ email, password })
   },
   doLogout () {
-    return new Promise(() => null)
+    return supabase.auth.signOut()
   }
 }

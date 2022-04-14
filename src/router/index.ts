@@ -1,13 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '@/views/Home/Home.vue'
-import Menu from '@/views/Menu/Menu.vue'
-import BookTable from '@/views/BookTable/BookTable.vue'
-import ReviewBooking from '@/views/ReviewBooking/ReviewBooking.vue'
-import Login from '@/views/Login/Login.vue'
-import Admin from '@/views/Admin/Admin.vue'
 
-import { root, store } from '@/store/index'
+import { useAuthStore } from '@/store/auth/authStore'
 
 Vue.use(VueRouter)
 
@@ -15,36 +9,36 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import(/* webpackChunkName: "homepage" */ '@/views/Home/Home.vue')
   },
   {
     path: '/menu',
     name: 'Menu',
-    component: Menu
+    component: () => import(/* webpackChunkName: "menupage" */ '@/views/Menu/Menu.vue')
   },
   {
     path: '/book-table',
     name: 'Book Table',
-    component: BookTable
+    component: () => import(/* webpackChunkName: "booktablepage" */ '@/views/BookTable/BookTable.vue')
   },
   {
     path: '/review-booking',
     name: 'Review Booking',
-    component: ReviewBooking
+    component: () => import(/* webpackChunkName: "reviewbookingpage" */ '@/views/ReviewBooking/ReviewBooking.vue')
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: () => import(/* webpackChunkName: "loginpage" */ '@/views/Login/Login.vue')
   },
   {
     path: '/admin',
     name: 'Admin',
-    component: Admin,
+    component: () => import(/* webpackChunkName: "adminpage" */ '@/views/Admin/Admin.vue'),
     beforeEnter: (to, from, next) => {
-      const ctx = root.context(store)
-      const notAuthorized = !ctx.modules.auth.state.isAuthorized && !ctx.modules.auth.state.user
-      if (notAuthorized) next({ name: 'Login' })
+      const authStore = useAuthStore()
+      const isUnautorized = !authStore.user
+      if (isUnautorized) next({ name: 'Login' })
       else next()
     }
   }
